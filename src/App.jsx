@@ -1,9 +1,10 @@
+import MainLayout from "./layout/MainLayout";
 function App() {
   return (
-    <div>
+    <MainLayout>
       <h1>Welcome to STUDIO NOIR</h1>
       <p>Two minds. One vision.</p>
-    </div>
+    </MainLayout>
   );
 }
 
