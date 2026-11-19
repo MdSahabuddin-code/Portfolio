@@ -1,7 +1,12 @@
 
 import { useEffect, useRef, useState } from "react";
+
 import "../../styles/studio-intro.css";
+import "../../styles/fireflies.css";
+
 import studioBg from "../../assets/images/studio-bg.png";
+import useSectionParallax from "../../hooks/useSectionParallax";
+import Fireflies from "../../components/FireFlies";
 
 // ========================================
 // TYPEWRITER COMPONENT
@@ -45,6 +50,7 @@ function TypewriterText({ text }) {
   }, [text]);
 
   // TYPEWRITER ANIMATION
+
   useEffect(() => {
     if (!started) return;
 
@@ -79,11 +85,7 @@ function TypewriterText({ text }) {
 // ========================================
 
 function StudioIntro() {
-  const sectionRef = useRef(null);
-  const backgroundRef = useRef(null);
-  const shapeOneRef = useRef(null);
-  const shapeTwoRef = useRef(null);
-  const contentRef = useRef(null);
+  const sectionRef = useSectionParallax(1.15);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -94,118 +96,39 @@ function StudioIntro() {
       "(prefers-reduced-motion: reduce)"
     );
 
-    // ========================================
-    // INDIVIDUAL SCROLL REVEALS
-    // ========================================
-
     const revealElements = section.querySelectorAll(
       ".studio-topline, .reveal-left, .reveal-right, .studio-column, .studio-bottom"
     );
-
-    let revealObserver;
 
     if (reducedMotion.matches) {
       revealElements.forEach((element) => {
         element.classList.add("is-visible");
       });
-    } else {
-      revealObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
 
-              revealObserver.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.35,
-          rootMargin: "0px 0px -15% 0px",
-        }
-      );
-
-      revealElements.forEach((element) => {
-        revealObserver.observe(element);
-      });
+      return;
     }
 
-    // ========================================
-    // MULTI-LAYER PARALLAX
-    // ========================================
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -10% 0px",
+      }
+    );
 
-    if (reducedMotion.matches) {
-      return () => {
-        revealObserver?.disconnect();
-      };
-    }
-
-    let animationFrame;
-
-    function updateParallax() {
-      cancelAnimationFrame(animationFrame);
-
-      animationFrame = requestAnimationFrame(() => {
-        const rect = section.getBoundingClientRect();
-
-        const progress = Math.max(
-          0,
-          Math.min(
-            1,
-            (window.innerHeight - rect.top) /
-              (window.innerHeight + rect.height)
-          )
-        );
-
-        const movement = progress - 0.5;
-        const intensity = window.innerWidth <= 700 ? 0.8 : 1.5;
-
-        const backgroundY = movement * -220 * intensity;
-        const shapeOneY = movement * 350 * intensity;
-        const shapeTwoY = movement * -280 * intensity;
-        const contentY = movement * 90 * intensity;
-
-        if (backgroundRef.current) {
-          backgroundRef.current.style.transform =
-            `translate3d(0, ${backgroundY}px, 0) scale(1.15)`;
-        }
-
-        if (shapeOneRef.current) {
-          shapeOneRef.current.style.transform =
-            `translate3d(0, ${shapeOneY}px, 0) rotate(-18deg)`;
-        }
-
-        if (shapeTwoRef.current) {
-          shapeTwoRef.current.style.transform =
-            `translate3d(0, ${shapeTwoY}px, 0) rotate(20deg)`;
-        }
-
-        if (contentRef.current) {
-          contentRef.current.style.transform =
-            `translate3d(0, ${contentY}px, 0)`;
-        }
-      });
-    }
-
-    window.addEventListener("scroll", updateParallax, {
-      passive: true,
+    revealElements.forEach((element) => {
+      revealObserver.observe(element);
     });
 
-    window.addEventListener("resize", updateParallax);
-
-    updateParallax();
-
-    // ========================================
-    // CLEANUP
-    // ========================================
-
     return () => {
-      revealObserver?.disconnect();
-
-      window.removeEventListener("scroll", updateParallax);
-      window.removeEventListener("resize", updateParallax);
-
-      cancelAnimationFrame(animationFrame);
+      revealObserver.disconnect();
     };
   }, []);
 
@@ -219,7 +142,6 @@ function StudioIntro() {
 
       <div
         className="studio-parallax-bg"
-        ref={backgroundRef}
         aria-hidden="true"
       >
         <img src={studioBg} alt="" />
@@ -228,29 +150,24 @@ function StudioIntro() {
       {/* LAYER 2: ABSTRACT SHAPES */}
 
       <div className="studio-visuals" aria-hidden="true">
-        <div
-          className="studio-shape studio-shape-one"
-          ref={shapeOneRef}
-        >
+        <div className="studio-shape studio-shape-one">
           <div className="studio-shape-inner" />
           <div className="studio-shape-core" />
         </div>
 
-        <div
-          className="studio-shape studio-shape-two"
-          ref={shapeTwoRef}
-        >
+        <div className="studio-shape studio-shape-two">
           <div className="studio-shape-inner" />
           <div className="studio-shape-core" />
         </div>
       </div>
 
-      {/* LAYER 3: FOREGROUND CONTENT */}
+      {/* LAYER 3: FLOATING FIREFLIES */}
 
-      <div
-        className="studio-container"
-        ref={contentRef}
-      >
+      <Fireflies count={20} variant="studio" />
+
+      {/* LAYER 4: FOREGROUND CONTENT */}
+
+      <div className="studio-container">
         {/* TOP LABEL */}
 
         <div className="studio-topline">

@@ -60,10 +60,10 @@
 
 .hero {
   position: relative;
+  isolation: isolate;
 
   width: 100%;
   height: 100vh;
-
   min-height: 600px;
   max-height: none;
 
@@ -73,8 +73,6 @@
   align-items: center;
 
   background: var(--bg-color);
-
-  isolation: isolate;
 
   transition: background-color 0.4s ease;
 }
@@ -97,7 +95,10 @@
 
   overflow: hidden;
 
-  will-change: transform;
+  /* Shared parallax */
+  translate: 0 var(--parallax-medium, 0px);
+
+  will-change: translate;
 }
 
 .hero-background img {
@@ -111,8 +112,6 @@
 
   animation: backgroundZoom 25s ease-in-out infinite alternate;
 }
-
-/* Slow Zoom */
 
 @keyframes backgroundZoom {
   from {
@@ -131,7 +130,6 @@
 
 .hero-overlay {
   position: absolute;
-
   inset: 0;
 
   z-index: 1;
@@ -143,18 +141,31 @@
 
 
 /* ========================================
+   FIRELIES LAYER
+======================================== */
+
+.fireflies-hero {
+  z-index: 2;
+}
+
+
+/* ========================================
    FLOATING PARTICLES
 ======================================== */
 
 .hero-particles {
   position: absolute;
-
   inset: 0;
 
   z-index: 2;
 
   pointer-events: none;
   overflow: hidden;
+
+  /* Shared parallax */
+  translate: 0 var(--parallax-fast, 0px);
+
+  will-change: translate;
 }
 
 .hero-particles span {
@@ -167,8 +178,7 @@
 
   border-radius: 50%;
 
-  box-shadow:
-    0 0 12px 3px var(--hero-glow);
+  box-shadow: 0 0 12px 3px var(--hero-glow);
 
   opacity: 0;
 
@@ -225,8 +235,6 @@
   animation-delay: 7s;
 }
 
-/* Particle Movement */
-
 @keyframes floatParticle {
   0% {
     transform: translateY(0);
@@ -254,18 +262,19 @@
 
 .hero-content {
   position: relative;
-
   z-index: 3;
 
   width: 100%;
   max-width: 1200px;
 
   margin: 0 auto;
-
   padding: 40px 30px;
-}
 
-/* Subtitle */
+  /* Shared parallax */
+  translate: 0 var(--parallax-content, 0px);
+
+  will-change: translate;
+}
 
 .hero-subtitle {
   color: var(--accent-color);
@@ -279,8 +288,6 @@
 
   animation: fadeUp 1s ease both;
 }
-
-/* Main Heading */
 
 .hero-content h1 {
   color: var(--hero-heading);
@@ -299,13 +306,9 @@
   transition: color 0.4s ease;
 }
 
-/* Gold Heading Text */
-
 .hero-content h1 span {
   color: var(--accent-color);
 }
-
-/* Description */
 
 .hero-description {
   max-width: 520px;
@@ -332,7 +335,6 @@
   align-items: center;
 
   gap: 18px;
-
   flex-wrap: wrap;
 
   animation: fadeUp 1s ease 0.6s both;
@@ -353,8 +355,6 @@
   transition: all 0.3s ease;
 }
 
-/* Primary Button */
-
 .primary-btn {
   background: var(--accent-color);
 
@@ -368,11 +368,8 @@
 
   color: var(--accent-color);
 
-  box-shadow:
-    0 0 20px var(--hero-glow);
+  box-shadow: 0 0 20px var(--hero-glow);
 }
-
-/* Secondary Button */
 
 .secondary-btn {
   background: transparent;
@@ -387,8 +384,7 @@
 
   color: var(--accent-color);
 
-  box-shadow:
-    0 0 15px var(--hero-glow);
+  box-shadow: 0 0 15px var(--hero-glow);
 }
 
 
@@ -398,7 +394,6 @@
 
 .hero-scroll {
   position: absolute;
-
   z-index: 3;
 
   bottom: 30px;
@@ -408,7 +403,6 @@
 
   display: flex;
   flex-direction: column;
-
   align-items: center;
 
   gap: 12px;
@@ -418,7 +412,6 @@
   color: var(--hero-description);
 
   font-size: 10px;
-
   letter-spacing: 3px;
 
   transition: color 0.4s ease;
@@ -432,8 +425,6 @@
 
   animation: scrollPulse 1.5s ease-in-out infinite;
 }
-
-/* Scroll Animation */
 
 @keyframes scrollPulse {
   0%, 100% {
@@ -485,7 +476,6 @@
 ======================================== */
 
 @media (max-width: 700px) {
-
   .hero {
     height: 100svh;
     min-height: 600px;
@@ -538,7 +528,6 @@
 ======================================== */
 
 @media (prefers-reduced-motion: reduce) {
-
   .hero-background,
   .hero-background img,
   .hero-particles span,
@@ -548,7 +537,10 @@
     transition: none !important;
   }
 
-  .hero-background {
+  .hero-background,
+  .hero-particles,
+  .hero-content {
+    translate: none !important;
     will-change: auto;
   }
 }
