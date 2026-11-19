@@ -266,36 +266,37 @@
 
   .navbar {
     top: 10px;
-
     margin: 0;
-    padding: 0 12px;
-
-    gap: 10px;
+    padding: 8px 8px;
+    gap: 5px;
     flex-wrap: wrap;
   }
 
   .navbar-logo img {
-    width: 115px;
-    height: 40px;
+    width: 100px;
+    height: 36px;
   }
 
   .switch {
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .nav-menu {
     order: 3;
-
     width: 100%;
-    overflow-x: auto;
+    overflow-x: visible;
 
-    justify-content: flex-start;
-    gap: 4px;
+    display: flex;
+    justify-content: space-between;
+    gap: 0;
 
-    border-radius: 30px;
+    padding: 6px 5px;
+    border-radius: 25px;
   }
 
   .nav-link {
-    padding: 10px 13px;
+    padding: 9px 7px;
+    font-size: 11px;
+    white-space: nowrap;
   }
 }
