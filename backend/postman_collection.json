@@ -1,0 +1,70 @@
+{
+  "info": {
+    "name": "Portfolio Contact Us Backend",
+    "description": "Requests to test the Contact Us API: submit a message, list submissions, and fetch one by id.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "submissionId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Submit Contact Form - Success",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Priya Sharma\",\n  \"email\": \"priya.sharma@example.com\",\n  \"phone\": \"+91-9876543210\",\n  \"message\": \"Hi, I checked out your portfolio and I'm interested in discussing a freelance web development project. Could we schedule a call this week?\"\n}"
+        },
+        "url": "{{baseUrl}}/api/contact"
+      }
+    },
+    {
+      "name": "Submit Contact Form - Without Phone (Optional Field)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Arjun Mehta\",\n  \"email\": \"arjun.mehta@example.com\",\n  \"message\": \"Loved your portfolio! Please reach out regarding a potential collaboration.\"\n}"
+        },
+        "url": "{{baseUrl}}/api/contact"
+      }
+    },
+    {
+      "name": "Submit Contact Form - Validation Error (missing fields)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"\",\n  \"email\": \"not-an-email\",\n  \"message\": \"short\"\n}"
+        },
+        "url": "{{baseUrl}}/api/contact"
+      }
+    },
+    {
+      "name": "List Contact Submissions",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/contact?page=1&limit=20"
+      }
+    },
+    {
+      "name": "Get Contact Submission by Id",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/contact/{{submissionId}}"
+      }
+    }
+  ]
+}
