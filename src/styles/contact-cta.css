@@ -1,0 +1,538 @@
+
+/* ========================================
+   CONTACT CTA
+   CINEMATIC TYPEWRITER SECTION
+   GLOBAL LIGHT / DARK THEME
+======================================== */
+
+.contact-cta {
+  --cta-bg: #171717;
+  --cta-gold: #D6BD8B;
+  --cta-ivory: #F3EFE6;
+  --cta-muted: #BDB5A7;
+  --cta-border: #3B3935;
+  --cta-glow: rgba(214, 189, 139, 0.11);
+  --cta-glow-soft: rgba(214, 189, 139, 0.045);
+  --cta-decoration: rgba(243, 239, 230, 0.025);
+  --cta-button-text: #171717;
+
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 85vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 120px 7%;
+
+  overflow: hidden;
+  overflow: clip;
+
+  background: var(--cta-bg);
+  color: var(--cta-ivory);
+
+  transition:
+    background-color 0.55s ease,
+    color 0.55s ease;
+}
+
+/* ========================================
+   GLOBAL LIGHT THEME
+======================================== */
+
+:root[data-theme="light"] .contact-cta {
+  --cta-bg: #F3EFE6;
+  --cta-gold: #9B7740;
+  --cta-ivory: #24211C;
+  --cta-muted: #756D61;
+  --cta-border: #D8D0C2;
+  --cta-glow: rgba(177, 139, 77, 0.14);
+  --cta-glow-soft: rgba(177, 139, 77, 0.055);
+  --cta-decoration: rgba(36, 33, 28, 0.035);
+  --cta-button-text: #F3EFE6;
+}
+
+/* ========================================
+   BACKGROUND GLOW
+======================================== */
+
+.cta-glow {
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(
+    circle,
+    var(--cta-glow) 0%,
+    var(--cta-glow-soft) 35%,
+    transparent 70%
+  );
+
+  pointer-events: none;
+  z-index: 0;
+
+  animation: ctaGlowFloat 9s ease-in-out infinite alternate;
+}
+
+@keyframes ctaGlowFloat {
+  from {
+    transform: translate(-50%, -47%) scale(0.95);
+  }
+
+  to {
+    transform: translate(-50%, -53%) scale(1.08);
+  }
+}
+
+/* ========================================
+   FIREFLIES
+======================================== */
+
+.contact-cta .fireflies-container {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ========================================
+   MAIN CONTAINER
+======================================== */
+
+.cta-container {
+  position: relative;
+
+  width: 100%;
+  max-width: 1250px;
+
+  margin: 0 auto;
+
+  z-index: 3;
+}
+
+/* ========================================
+   TOP LINE
+======================================== */
+
+.cta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 28px;
+
+  border-bottom: 1px solid var(--cta-border);
+
+  opacity: 0;
+  transform: translateY(25px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.55s ease;
+}
+
+.cta-container.cta-started .cta-top {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-eyebrow {
+  font-family: "Inter", sans-serif;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 3px;
+
+  color: var(--cta-gold);
+
+  transition: color 0.55s ease;
+}
+
+.cta-number {
+  font-family: "Inter", sans-serif;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+
+  color: var(--cta-muted);
+
+  transition: color 0.55s ease;
+}
+
+/* ========================================
+   MAIN CONTENT
+======================================== */
+
+.cta-content {
+  position: relative;
+
+  padding: 75px 0 65px;
+}
+
+/* ========================================
+   TYPEWRITER HEADING
+======================================== */
+
+.cta-heading {
+  max-width: 1100px;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(48px, 7.5vw, 105px);
+  font-weight: 400;
+
+  line-height: 1.2;
+  letter-spacing: -3px;
+
+  color: var(--cta-ivory);
+
+  transition: color 0.55s ease;
+}
+
+.cta-heading-line {
+  display: block;
+
+  min-height: 1.2em;
+
+  white-space: nowrap;
+}
+
+.cta-heading-gold {
+  color: var(--cta-gold);
+  font-style: italic;
+
+  transition: color 0.55s ease;
+}
+
+/* ========================================
+   TYPEWRITER CURSOR
+======================================== */
+
+.cta-cursor {
+  display: inline-block;
+
+  width: 3px;
+  height: 0.85em;
+
+  margin-left: 6px;
+
+  vertical-align: -0.02em;
+
+  background: var(--cta-gold);
+
+  animation: ctaCursorBlink 0.8s steps(2, start) infinite;
+}
+
+@keyframes ctaCursorBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   DESCRIPTION REVEAL
+======================================== */
+
+.cta-description {
+  max-width: 470px;
+
+  margin-top: 35px;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 15px;
+  font-weight: 300;
+
+  line-height: 1.9;
+
+  color: var(--cta-muted);
+
+  opacity: 0;
+  transform: translateY(25px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.55s ease;
+}
+
+.cta-container.cta-complete .cta-description {
+  opacity: 1;
+  transform: translateY(0);
+
+  transition-delay: 0.15s, 0.15s, 0s;
+}
+
+/* ========================================
+   BOTTOM AREA
+======================================== */
+
+.cta-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 30px;
+
+  border-top: 1px solid var(--cta-border);
+
+  opacity: 0;
+  transform: translateY(25px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.55s ease;
+}
+
+.cta-container.cta-complete .cta-bottom {
+  opacity: 1;
+  transform: translateY(0);
+
+  transition-delay: 0.4s, 0.4s, 0s;
+}
+
+/* ========================================
+   CTA BUTTON
+======================================== */
+
+.cta-button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 35px;
+
+  padding: 17px 24px;
+
+  background: var(--cta-gold);
+  color: var(--cta-button-text);
+
+  border-radius: 50px;
+
+  text-decoration: none;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.cta-button:hover {
+  background: var(--cta-ivory);
+  color: var(--cta-bg);
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 12px 35px rgba(100, 80, 45, 0.16);
+}
+
+.cta-arrow {
+  display: inline-block;
+
+  font-size: 19px;
+
+  transition: transform 0.35s ease;
+}
+
+.cta-button:hover .cta-arrow {
+  transform: translate(4px, -4px);
+}
+
+.cta-brand {
+  font-family: "Inter", sans-serif;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 3px;
+
+  color: var(--cta-muted);
+
+  transition: color 0.55s ease;
+}
+
+/* ========================================
+   DECORATIVE BACKGROUND TYPOGRAPHY
+======================================== */
+
+.cta-decoration {
+  position: absolute;
+
+  bottom: -65px;
+  right: 3%;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(90px, 16vw, 230px);
+  font-weight: 700;
+
+  letter-spacing: -10px;
+
+  color: var(--cta-decoration);
+
+  white-space: nowrap;
+
+  pointer-events: none;
+  user-select: none;
+
+  z-index: 0;
+
+  animation:
+    ctaTextFloat 10s ease-in-out infinite alternate;
+}
+
+@keyframes ctaTextFloat {
+  from {
+    transform: translate3d(0, -8px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 12px, 0);
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .contact-cta {
+    min-height: 75vh;
+    padding: 100px 6%;
+  }
+
+  .cta-content {
+    padding: 65px 0 55px;
+  }
+
+  .cta-heading {
+    letter-spacing: -2px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .contact-cta {
+    min-height: auto;
+    padding: 90px 24px;
+  }
+
+  .cta-glow {
+    width: 400px;
+    height: 400px;
+  }
+
+  .cta-top {
+    padding-bottom: 20px;
+  }
+
+  .cta-eyebrow {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .cta-number {
+    font-size: 10px;
+  }
+
+  .cta-content {
+    padding: 65px 0 55px;
+  }
+
+  .cta-heading {
+    font-size: clamp(34px, 9vw, 58px);
+    line-height: 1.25;
+    letter-spacing: -1.5px;
+  }
+
+  .cta-heading-line {
+    min-height: 1.25em;
+  }
+
+  .cta-cursor {
+    width: 2px;
+  }
+
+  .cta-description {
+    margin-top: 25px;
+
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .cta-bottom {
+    align-items: flex-start;
+    gap: 25px;
+    flex-direction: column;
+  }
+
+  .cta-button {
+    padding: 16px 22px;
+    gap: 30px;
+  }
+
+  .cta-brand {
+    font-size: 9px;
+  }
+
+  .cta-decoration {
+    bottom: -25px;
+    right: -10px;
+
+    font-size: 100px;
+    letter-spacing: -5px;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-glow,
+  .cta-decoration {
+    animation: none;
+  }
+
+  .cta-cursor {
+    animation: none;
+  }
+
+  .cta-top,
+  .cta-description,
+  .cta-bottom {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
