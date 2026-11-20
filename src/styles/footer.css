@@ -1,0 +1,386 @@
+
+/* ========================================
+   FOOTER
+   CINEMATIC EDITORIAL SIGNATURE
+======================================== */
+
+.site-footer {
+  --footer-bg: #171717;
+  --footer-text: #F3EFE6;
+  --footer-muted: #A9A196;
+  --footer-gold: #D6BD8B;
+  --footer-border: #3B3935;
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  overflow: hidden;
+
+  background: var(--footer-bg);
+  color: var(--footer-text);
+
+  padding: 65px 6% 25px;
+
+  transition:
+    background 0.5s ease,
+    color 0.5s ease;
+}
+
+/* LIGHT THEME */
+
+:root[data-theme="light"] .site-footer {
+  --footer-bg: #F3EFE6;
+  --footer-text: #171717;
+  --footer-muted: #777168;
+  --footer-gold: #A78C5A;
+  --footer-border: #D6CFC1;
+}
+
+/* ========================================
+   AMBIENT GLOW
+======================================== */
+
+.footer-glow {
+  position: absolute;
+  z-index: -1;
+
+  width: 550px;
+  height: 350px;
+
+  top: -180px;
+  right: 5%;
+
+  background: radial-gradient(
+    ellipse,
+    rgba(214, 189, 139, 0.13),
+    transparent 70%
+  );
+
+  filter: blur(35px);
+  pointer-events: none;
+}
+
+/* ========================================
+   CONTAINER
+======================================== */
+
+.footer-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   TOP BAR
+======================================== */
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--footer-border);
+}
+
+.footer-logo {
+  color: var(--footer-text);
+  text-decoration: none;
+
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+.footer-logo span {
+  color: var(--footer-gold);
+}
+
+.footer-top-label {
+  color: var(--footer-muted);
+
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+/* ========================================
+   FOOTER NAVIGATION
+======================================== */
+
+.footer-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.5fr;
+
+  gap: 60px;
+
+  padding: 65px 0 75px;
+}
+
+.footer-link-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 15px;
+}
+
+.footer-column-title {
+  color: var(--footer-gold);
+
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+
+  margin-bottom: 8px;
+}
+
+.footer-nav-link {
+  position: relative;
+
+  color: var(--footer-text);
+  text-decoration: none;
+
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer-nav-link:hover {
+  color: var(--footer-gold);
+  transform: translateX(6px);
+}
+
+/* ========================================
+   STUDIO APPROACH
+======================================== */
+
+.footer-studio-info p {
+  color: var(--footer-muted);
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(18px, 2vw, 25px);
+  line-height: 1.7;
+  font-style: italic;
+
+  margin: 0;
+}
+
+/* ========================================
+   OVERSIZED SIGNATURE
+======================================== */
+
+.footer-signature {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  border-top: 1px solid var(--footer-border);
+  border-bottom: 1px solid var(--footer-border);
+
+  padding: 25px 0 15px;
+}
+
+.footer-signature span {
+  display: block;
+  width: 100%;
+
+  color: var(--footer-text);
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(38px, 13.5vw, 230px);
+  font-weight: 600;
+
+  letter-spacing: -0.075em;
+  line-height: 1;
+
+  white-space: nowrap;
+  text-align: center;
+
+  transform: translateY(35px);
+  opacity: 0;
+
+  transition:
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 1s ease;
+}
+
+.footer-visible .footer-signature span {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ========================================
+   BOTTOM BAR
+======================================== */
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  padding-top: 25px;
+}
+
+.footer-copyright,
+.footer-bottom-center {
+  color: var(--footer-muted);
+
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.footer-back-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  border: none;
+  background: none;
+
+  color: var(--footer-text);
+  cursor: pointer;
+
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+
+  transition: color 0.3s ease;
+}
+
+.footer-back-top span {
+  color: var(--footer-gold);
+  font-size: 18px;
+
+  transition: transform 0.3s ease;
+}
+
+.footer-back-top:hover {
+  color: var(--footer-gold);
+}
+
+.footer-back-top:hover span {
+  transform: translateY(-5px);
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .footer-links {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+
+  .footer-studio-info {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom-center {
+    display: none;
+  }
+
+  .footer-signature span {
+    font-size: clamp(45px, 12.5vw, 115px);
+    letter-spacing: -0.075em;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+  .site-footer {
+    padding: 45px 6% 22px;
+  }
+
+  .footer-top {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .footer-logo {
+    font-size: 21px;
+  }
+
+  .footer-top-label {
+    max-width: 120px;
+    font-size: 8px;
+    line-height: 1.8;
+    text-align: right;
+    letter-spacing: 1.5px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 20px;
+    padding: 45px 0 50px;
+  }
+
+  .footer-nav-link {
+    font-size: 13px;
+  }
+
+  .footer-studio-info p {
+    font-size: 19px;
+  }
+
+  .footer-signature {
+    padding: 20px 0;
+  }
+
+  .footer-signature span {
+    font-size: clamp(34px, 10.5vw, 62px);
+    letter-spacing: -0.065em;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .footer-copyright {
+    font-size: 8px;
+    line-height: 1.8;
+  }
+}
+
+/* ========================================
+   EXTRA SMALL MOBILE
+======================================== */
+
+@media (max-width: 380px) {
+  .footer-signature span {
+    font-size: 9.8vw;
+    letter-spacing: -0.055em;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-signature span,
+  .footer-nav-link,
+  .footer-back-top,
+  .footer-back-top span {
+    transition: none;
+  }
+
+  .footer-signature span {
+    transform: none;
+    opacity: 1;
+  }
+}
