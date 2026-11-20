@@ -67,7 +67,7 @@ function FeaturedProjects() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   // ========================================
-  // CINEMATIC SECTION ENTRANCE
+  // CINEMATIC ENTRANCE + AUTOMATIC SCROLL
   // ========================================
 
   useEffect(() => {
@@ -79,17 +79,34 @@ function FeaturedProjects() {
       "(prefers-reduced-motion: reduce)"
     );
 
+    // Accessibility: no automatic scrolling
     if (reducedMotion.matches) {
       section.classList.add("projects-visible");
       return;
     }
 
+    let hasTriggered = false;
+    let scrollFrame = null;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          section.classList.add("projects-visible");
-          observer.disconnect();
-        }
+        if (!entry.isIntersecting || hasTriggered) return;
+
+        hasTriggered = true;
+
+        // Start cinematic entrance
+        section.classList.add("projects-visible");
+
+        // Stop observing after first entrance
+        observer.disconnect();
+
+        // Automatically bring Featured Projects into view
+        scrollFrame = requestAnimationFrame(() => {
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        });
       },
       {
         threshold: 0.05,
@@ -98,7 +115,13 @@ function FeaturedProjects() {
 
     observer.observe(section);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+
+      if (scrollFrame !== null) {
+        cancelAnimationFrame(scrollFrame);
+      }
+    };
   }, []);
 
   // ========================================
@@ -214,6 +237,10 @@ function FeaturedProjects() {
         gestureLockedRef.current = false;
       }, 250);
     };
+
+    // ========================================
+    // WHEEL NAVIGATION
+    // ========================================
 
     const handleWheel = (event) => {
       const direction = event.deltaY > 0 ? 1 : -1;
