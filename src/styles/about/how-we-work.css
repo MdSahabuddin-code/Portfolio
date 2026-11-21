@@ -333,12 +333,14 @@
 .how-we-work-background-number {
   position: absolute;
   right: 4%;
-  bottom: -100px;
+  bottom: 0;
   z-index: 0;
+
   color: rgba(214, 189, 139, 0.035);
   font-family: "Playfair Display", serif;
-  font-size: clamp(250px, 34vw, 490px);
-  line-height: 1;
+  font-size: clamp(200px, 28vw, 400px);
+  line-height: 0.85;
+
   pointer-events: none;
 }
 
@@ -494,8 +496,6 @@
 
   .how-we-work-background-number {
     right: -5%;
-    bottom: -30px;
-    font-size: 240px;
   }
 }
 
