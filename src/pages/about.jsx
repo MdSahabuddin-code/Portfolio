@@ -1,6 +1,7 @@
 import AboutBackground from "../components/AboutBackground";
 import AboutHero from "../section/about/AboutHero";
 import OurStory from "../section/about/OurStory";
+import Philosophy from "../section/about/Philosophy";
 
 function About() {
   return (
@@ -8,6 +9,7 @@ function About() {
       <AboutBackground />
       <AboutHero />
       <OurStory />
+      <Philosophy />
     </main>
   );
 }
