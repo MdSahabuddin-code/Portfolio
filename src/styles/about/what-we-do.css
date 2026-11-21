@@ -1,0 +1,468 @@
+
+/* ========================================
+   WHAT WE DO
+   SECTION 05 — OUR CAPABILITIES
+======================================== */
+
+.what-we-do {
+  --cap-text: #F3EFE6;
+  --cap-muted: #A9A398;
+  --cap-gold: #D6BD8B;
+  --cap-border: rgba(214, 189, 139, 0.22);
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100svh;
+  padding: 145px 7vw 110px;
+  overflow: hidden;
+  color: var(--cap-text);
+  background: transparent;
+}
+
+.what-we-do-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ----------------------------------------
+   HEADER
+---------------------------------------- */
+
+.what-we-do-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 48px;
+
+  color: var(--cap-gold);
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.what-we-do-eyebrow-line {
+  width: 42px;
+  height: 1px;
+  background: var(--cap-gold);
+}
+
+.what-we-do-heading-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: end;
+  gap: 65px;
+  margin-bottom: 100px;
+}
+
+.what-we-do-title {
+  margin: 0;
+  color: var(--cap-text);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(55px, 7.2vw, 104px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+}
+
+.what-we-do-title span {
+  color: var(--cap-muted);
+}
+
+.what-we-do-title em {
+  color: var(--cap-gold);
+  font-weight: 400;
+}
+
+.what-we-do-intro {
+  max-width: 420px;
+  padding-bottom: 8px;
+}
+
+.what-we-do-intro-label {
+  color: var(--cap-gold);
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+}
+
+.what-we-do-intro p {
+  margin: 23px 0 18px;
+  color: var(--cap-muted);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.what-we-do-intro .what-we-do-intro-secondary {
+  margin-top: 0;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+/* ----------------------------------------
+   CONTENT LAYOUT
+---------------------------------------- */
+
+.what-we-do-content {
+  display: grid;
+  grid-template-columns: 0.32fr 1.68fr;
+  gap: 55px;
+}
+
+.what-we-do-side-note {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  padding-top: 10px;
+
+  color: var(--cap-muted);
+  font-family: "Inter", sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+.what-we-do-side-line {
+  width: 35px;
+  height: 1px;
+  background: var(--cap-gold);
+}
+
+/* ----------------------------------------
+   CAPABILITY LIST
+---------------------------------------- */
+
+.what-we-do-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.capability-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.2fr 1.8fr;
+  gap: 30px;
+  padding: 35px 25px 38px;
+  border-top: 1px solid var(--cap-border);
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease,
+    background 0.4s ease;
+}
+
+.capability-item:last-child {
+  border-bottom: 1px solid var(--cap-border);
+}
+
+.what-we-do-visible .capability-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: var(--capability-delay);
+}
+
+.capability-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 0;
+  background: var(--cap-gold);
+  transition: height 0.5s ease;
+}
+
+.capability-item:hover {
+  background: rgba(214, 189, 139, 0.045);
+}
+
+.capability-item:hover::before {
+  height: 100%;
+}
+
+.capability-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.capability-number {
+  color: var(--cap-gold);
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
+}
+
+.capability-arrow {
+  color: var(--cap-gold);
+  font-size: 21px;
+  transition: transform 0.35s ease;
+}
+
+.capability-item:hover .capability-arrow {
+  transform: translate(4px, -4px);
+}
+
+.capability-main h3 {
+  margin: 0 0 13px;
+  color: var(--cap-text);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(27px, 3vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  transition: color 0.35s ease;
+}
+
+.capability-item:hover .capability-main h3 {
+  color: var(--cap-gold);
+}
+
+.capability-main p {
+  max-width: 650px;
+  margin: 0 0 20px;
+  color: var(--cap-muted);
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 1.95;
+}
+
+.capability-tags {
+  color: var(--cap-muted);
+  font-family: "Inter", sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+/* ----------------------------------------
+   CLOSING STATEMENT
+---------------------------------------- */
+
+.what-we-do-closing {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  margin-top: 100px;
+  padding: 35px 0;
+  border-top: 1px solid var(--cap-border);
+}
+
+.what-we-do-closing-mark {
+  color: var(--cap-gold);
+  font-family: "Playfair Display", serif;
+  font-size: 65px;
+  line-height: 1;
+}
+
+.what-we-do-closing-content > span {
+  color: var(--cap-muted);
+  font-family: "Inter", sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.17em;
+}
+
+.what-we-do-closing-content p {
+  margin: 13px 0 0;
+  color: var(--cap-text);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(20px, 2.6vw, 32px);
+  line-height: 1.5;
+}
+
+.what-we-do-closing-content em {
+  color: var(--cap-gold);
+}
+
+/* ----------------------------------------
+   BACKGROUND NUMBER
+---------------------------------------- */
+
+.what-we-do-background-number {
+  position: absolute;
+  right: 3%;
+  bottom: -110px;
+  z-index: 0;
+  color: rgba(214, 189, 139, 0.035);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(250px, 34vw, 490px);
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ----------------------------------------
+   FIREFLIES
+---------------------------------------- */
+
+.what-we-do > .fireflies-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ----------------------------------------
+   LIGHT THEME
+---------------------------------------- */
+
+:root[data-theme="light"] .what-we-do {
+  --cap-text: #29251F;
+  --cap-muted: #756D60;
+  --cap-gold: #9B7942;
+  --cap-border: rgba(155, 121, 66, 0.24);
+}
+
+:root[data-theme="light"] .capability-item:hover {
+  background: rgba(155, 121, 66, 0.055);
+}
+
+:root[data-theme="light"] .what-we-do-background-number {
+  color: rgba(155, 121, 66, 0.055);
+}
+
+/* ----------------------------------------
+   TABLET
+---------------------------------------- */
+
+@media (max-width: 1000px) {
+  .what-we-do {
+    padding-right: 5vw;
+    padding-left: 5vw;
+  }
+
+  .what-we-do-heading-grid {
+    gap: 40px;
+    margin-bottom: 75px;
+  }
+
+  .what-we-do-content {
+    grid-template-columns: 0.25fr 1.75fr;
+    gap: 30px;
+  }
+}
+
+/* ----------------------------------------
+   MOBILE
+---------------------------------------- */
+
+@media (max-width: 700px) {
+  .what-we-do {
+    min-height: auto;
+    padding: 105px 6vw 85px;
+  }
+
+  .what-we-do-eyebrow {
+    margin-bottom: 35px;
+    font-size: 9px;
+  }
+
+  .what-we-do-heading-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 55px;
+  }
+
+  .what-we-do-title {
+    font-size: clamp(49px, 12vw, 76px);
+  }
+
+  .what-we-do-intro p {
+    margin: 17px 0;
+    font-size: 13px;
+  }
+
+  .what-we-do-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .what-we-do-side-note {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .what-we-do-side-line {
+    width: 25px;
+  }
+
+  .capability-item {
+    grid-template-columns: 35px 1fr;
+    gap: 15px;
+    padding: 28px 12px 30px;
+  }
+
+  .capability-top {
+    min-height: 100%;
+  }
+
+  .capability-number {
+    font-size: 13px;
+  }
+
+  .capability-arrow {
+    font-size: 17px;
+  }
+
+  .capability-main h3 {
+    font-size: clamp(25px, 7vw, 34px);
+  }
+
+  .capability-main p {
+    font-size: 11px;
+  }
+
+  .capability-tags {
+    font-size: 7px;
+    line-height: 1.8;
+  }
+
+  .what-we-do-closing {
+    align-items: flex-start;
+    gap: 18px;
+    margin-top: 65px;
+    padding-top: 28px;
+  }
+
+  .what-we-do-closing-mark {
+    font-size: 48px;
+  }
+
+  .what-we-do-closing-content p {
+    font-size: 21px;
+  }
+
+  .what-we-do-background-number {
+    right: -5%;
+    bottom: -30px;
+    font-size: 240px;
+  }
+}
+
+/* ----------------------------------------
+   REDUCED MOTION
+---------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .capability-item,
+  .capability-item::before,
+  .capability-arrow,
+  .capability-main h3 {
+    transition: none !important;
+  }
+
+  .capability-item {
+    opacity: 1;
+    transform: none;
+  }
+}
