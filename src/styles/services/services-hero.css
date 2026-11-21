@@ -1,0 +1,565 @@
+
+/* ========================================
+   SERVICES HERO
+   CINEMATIC EDITORIAL INTRODUCTION
+   LIGHT / DARK THEME
+======================================== */
+
+.services-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: clip;
+  background: #171717;
+}
+
+:root[data-theme="light"] .services-page {
+  background: #F3EFE6;
+}
+
+.services-page > *:not(.about-background) {
+  position: relative;
+  z-index: 1;
+}
+
+.services-hero {
+  --services-bg: #171717;
+  --services-text: #F3EFE6;
+  --services-muted: #BDB5A7;
+  --services-gold: #D6BD8B;
+  --services-border: rgba(214, 189, 139, 0.25);
+  --services-glow: rgba(214, 189, 139, 0.12);
+
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+
+  padding: 150px 7vw 85px;
+
+  overflow: hidden;
+
+  background: transparent;
+  color: var(--services-text);
+}
+
+/* ========================================
+   LIGHT THEME
+======================================== */
+
+:root[data-theme="light"] .services-hero {
+  --services-bg: #F3EFE6;
+  --services-text: #24211C;
+  --services-muted: #756D61;
+  --services-gold: #9B7942;
+  --services-border: rgba(155, 121, 66, 0.3);
+  --services-glow: rgba(155, 121, 66, 0.13);
+}
+
+/* ========================================
+   ATMOSPHERIC BACKGROUND
+======================================== */
+
+.services-hero-atmosphere {
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 78% 35%,
+      var(--services-glow),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 15% 85%,
+      rgba(214, 189, 139, 0.045),
+      transparent 40%
+    );
+
+  opacity: 0.9;
+}
+
+.services-hero-atmosphere::before {
+  content: "";
+
+  position: absolute;
+
+  width: 550px;
+  height: 550px;
+
+  top: 5%;
+  right: -180px;
+
+  border: 1px solid var(--services-border);
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 80px var(--services-glow),
+    inset 0 0 80px rgba(214, 189, 139, 0.025);
+
+  animation: servicesOrbit 18s ease-in-out infinite alternate;
+}
+
+.services-hero-atmosphere::after {
+  content: "";
+
+  position: absolute;
+
+  width: 380px;
+  height: 380px;
+
+  top: 15%;
+  right: -95px;
+
+  border: 1px solid var(--services-border);
+  border-radius: 50%;
+
+  opacity: 0.55;
+
+  animation: servicesOrbit 14s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes servicesOrbit {
+  from {
+    transform: translate3d(0, -15px, 0) rotate(0deg);
+  }
+
+  to {
+    transform: translate3d(-35px, 25px, 0) rotate(12deg);
+  }
+}
+
+/* ========================================
+   FIREFLIES
+======================================== */
+
+.services-hero .fireflies-layer {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ========================================
+   MAIN CONTAINER
+======================================== */
+
+.services-hero-container {
+  position: relative;
+
+  width: 100%;
+  max-width: 1450px;
+
+  margin: 0 auto;
+
+  z-index: 2;
+}
+
+/* ========================================
+   EYEBROW
+======================================== */
+
+.services-hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 65px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+
+  color: var(--services-gold);
+
+  opacity: 0;
+  transform: translateY(20px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.services-hero-line {
+  width: 42px;
+  height: 1px;
+
+  background: var(--services-gold);
+}
+
+/* ========================================
+   MAIN HEADING GRID
+======================================== */
+
+.services-hero-main {
+  display: grid;
+  grid-template-columns: 1.5fr 0.65fr;
+
+  align-items: end;
+  gap: 60px;
+}
+
+/* ========================================
+   TITLE
+======================================== */
+
+.services-hero-title {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(55px, 7.8vw, 112px);
+  font-weight: 400;
+
+  line-height: 1.12;
+  letter-spacing: -3px;
+
+  color: var(--services-text);
+}
+
+.services-hero-title > * {
+  display: inline-block;
+}
+
+.services-hero-title span,
+.services-hero-title em {
+  display: inline-block;
+
+  color: var(--services-gold);
+}
+
+.services-hero-title em {
+  font-weight: 400;
+}
+
+/* ========================================
+   SIDE CONTENT
+======================================== */
+
+.services-hero-side {
+  max-width: 360px;
+
+  padding-bottom: 12px;
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0.35s;
+}
+
+.services-hero-side-label {
+  display: block;
+
+  margin-bottom: 22px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+
+  color: var(--services-gold);
+}
+
+.services-hero-side p {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 2;
+
+  color: var(--services-muted);
+}
+
+/* ========================================
+   SCROLL INDICATOR
+======================================== */
+
+.services-hero-scroll {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  margin-top: 55px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+
+  color: var(--services-muted);
+}
+
+.services-scroll-circle {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--services-border);
+  border-radius: 50%;
+
+  font-size: 16px;
+  color: var(--services-gold);
+
+  animation: servicesScroll 2s ease-in-out infinite;
+}
+
+@keyframes servicesScroll {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* ========================================
+   BOTTOM LINE
+======================================== */
+
+.services-hero-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 100px;
+  padding-top: 22px;
+
+  border-top: 1px solid var(--services-border);
+
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 2px;
+
+  color: var(--services-muted);
+
+  opacity: 0;
+  transform: translateY(20px);
+
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+  transition-delay: 0.65s;
+}
+
+/* ========================================
+   BACKGROUND NUMBER
+======================================== */
+
+.services-hero-number {
+  position: absolute;
+
+  right: 5%;
+  bottom: 0;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(150px, 24vw, 340px);
+  font-weight: 400;
+  line-height: 0.8;
+
+  color: var(--services-gold);
+  opacity: 0.035;
+
+  pointer-events: none;
+  user-select: none;
+
+  z-index: 0;
+}
+
+/* ========================================
+   REVEAL ANIMATION
+======================================== */
+
+.services-hero-visible .services-hero-eyebrow,
+.services-hero-visible .services-hero-side,
+.services-hero-visible .services-hero-bottom {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.services-hero-title {
+  clip-path: inset(0 0 100% 0);
+
+  transition:
+    clip-path 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0.15s;
+}
+
+.services-hero-visible .services-hero-title {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+  .services-hero {
+    padding: 140px 6vw 75px;
+  }
+
+  .services-hero-main {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .services-hero-title {
+    font-size: clamp(58px, 9vw, 90px);
+  }
+
+  .services-hero-side {
+    max-width: 480px;
+  }
+
+  .services-hero-scroll {
+    margin-top: 30px;
+  }
+
+  .services-hero-bottom {
+    margin-top: 75px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .services-hero {
+    min-height: 100svh;
+
+    padding: 125px 24px 55px;
+
+    align-items: center;
+  }
+
+  .services-hero-eyebrow {
+    margin-bottom: 45px;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .services-hero-line {
+    width: 30px;
+  }
+
+  .services-hero-main {
+    gap: 35px;
+  }
+
+  .services-hero-title {
+    font-size: clamp(43px, 10vw, 66px);
+    line-height: 1.2;
+    letter-spacing: -1.8px;
+  }
+
+  .services-hero-side {
+    max-width: 100%;
+  }
+
+  .services-hero-side-label {
+    margin-bottom: 15px;
+    font-size: 9px;
+  }
+
+  .services-hero-side p {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  .services-hero-scroll {
+    margin-top: 30px;
+    font-size: 8px;
+  }
+
+  .services-hero-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+
+    margin-top: 60px;
+    padding-top: 18px;
+
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+
+  .services-hero-number {
+    right: 3%;
+    bottom: 0;
+    font-size: 180px;
+  }
+
+  .services-hero-atmosphere::before {
+    width: 350px;
+    height: 350px;
+    right: -200px;
+  }
+
+  .services-hero-atmosphere::after {
+    width: 250px;
+    height: 250px;
+    right: -150px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 380px) {
+  .services-hero {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .services-hero-title {
+    font-size: clamp(39px, 10vw, 48px);
+  }
+
+  .services-hero-bottom {
+    font-size: 7px;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .services-hero-atmosphere::before,
+  .services-hero-atmosphere::after,
+  .services-scroll-circle {
+    animation: none;
+  }
+
+  .services-hero-title {
+    clip-path: none;
+    transition: none;
+  }
+
+  .services-hero-eyebrow,
+  .services-hero-side,
+  .services-hero-bottom {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
