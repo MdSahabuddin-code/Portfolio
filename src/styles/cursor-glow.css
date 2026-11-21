@@ -1,0 +1,63 @@
+
+/* ========================================
+   GLOBAL CURSOR GLOW
+   S-DEVWORKS
+======================================== */
+
+.global-cursor-glow {
+  --glow-color: 214, 189, 139;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 650px;
+  height: 650px;
+
+  pointer-events: none;
+  z-index: 9999;
+
+  opacity: 0;
+
+  transform: translate3d(
+    calc(var(--cursor-x, -500px) - 50%),
+    calc(var(--cursor-y, -500px) - 50%),
+    0
+  );
+
+  background: radial-gradient(
+    circle,
+    rgba(var(--glow-color), 0.20) 0%,
+    rgba(var(--glow-color), 0.12) 22%,
+    rgba(var(--glow-color), 0.055) 42%,
+    rgba(var(--glow-color), 0.018) 58%,
+    transparent 72%
+  );
+
+  filter: blur(18px);
+  transition: opacity 0.35s ease;
+  will-change: transform, opacity;
+  mix-blend-mode: screen;
+}
+
+.global-cursor-glow.cursor-glow-visible {
+  opacity: 1;
+}
+
+/* Light Theme */
+
+html[data-theme="light"] .global-cursor-glow {
+  --glow-color: 177, 132, 65;
+
+  background: radial-gradient(
+    circle,
+    rgba(var(--glow-color), 0.24) 0%,
+    rgba(var(--glow-color), 0.16) 20%,
+    rgba(var(--glow-color), 0.09) 38%,
+    rgba(var(--glow-color), 0.035) 55%,
+    transparent 72%
+  );
+
+  filter: blur(22px);
+  mix-blend-mode: multiply;
+}
