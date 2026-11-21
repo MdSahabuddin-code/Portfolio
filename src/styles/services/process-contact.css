@@ -1,0 +1,672 @@
+
+/* ========================================
+   PROCESS + CONTACT
+   SERVICES PAGE FINAL SECTION
+   GLOBAL LIGHT / DARK THEME
+   FULLY RESPONSIVE
+======================================== */
+
+.process-contact {
+  --pc-text: #F3EFE6;
+  --pc-muted: #BDB5A7;
+  --pc-gold: #D6BD8B;
+  --pc-border: rgba(214, 189, 139, 0.23);
+  --pc-panel: rgba(255, 255, 255, 0.025);
+
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  padding: 125px 7% 85px;
+
+  color: var(--pc-text);
+  overflow: hidden;
+}
+
+:root[data-theme="light"] .process-contact {
+  --pc-text: #25231F;
+  --pc-muted: #716B60;
+  --pc-gold: #9B7942;
+  --pc-border: rgba(155, 121, 66, 0.25);
+  --pc-panel: rgba(155, 121, 66, 0.035);
+}
+
+.process-contact-container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   PROCESS HEADING
+======================================== */
+
+.process-heading {
+  margin-bottom: 90px;
+
+  opacity: 0;
+  transform: translateY(35px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.process-contact-visible .process-heading {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 35px;
+
+  color: var(--pc-gold);
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.process-eyebrow-line {
+  width: 42px;
+  height: 1px;
+  background: var(--pc-gold);
+}
+
+.process-heading-content {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: end;
+  gap: 65px;
+}
+
+.process-heading-content h2 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(43px, 6vw, 82px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.process-heading-content h2 em,
+.process-cta-content h2 em {
+  color: var(--pc-gold);
+  font-weight: 400;
+}
+
+.process-heading-content > p {
+  max-width: 400px;
+
+  margin: 0 0 8px;
+
+  color: var(--pc-muted);
+
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* ========================================
+   PROCESS TIMELINE
+======================================== */
+
+.process-timeline {
+  position: relative;
+  margin-bottom: 130px;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.process-track {
+  position: absolute;
+  top: 19px;
+  left: 0;
+  right: 0;
+
+  height: 1px;
+
+  background: var(--pc-border);
+}
+
+.process-track-progress {
+  width: 0;
+  height: 100%;
+
+  background: var(--pc-gold);
+  box-shadow: 0 0 10px rgba(214, 189, 139, 0.45);
+
+  transition: width 1.8s ease 0.4s;
+}
+
+.process-contact-visible .process-track-progress {
+  width: 100%;
+}
+
+.process-step {
+  position: relative;
+  z-index: 1;
+
+  min-width: 0;
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.process-contact-visible .process-step {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process-contact-visible .process-step:nth-child(1) {
+  transition-delay: 0.15s;
+}
+
+.process-contact-visible .process-step:nth-child(2) {
+  transition-delay: 0.3s;
+}
+
+.process-contact-visible .process-step:nth-child(3) {
+  transition-delay: 0.45s;
+}
+
+.process-contact-visible .process-step:nth-child(4) {
+  transition-delay: 0.6s;
+}
+
+.process-step-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 39px;
+  height: 39px;
+
+  margin-bottom: 34px;
+
+  border: 1px solid var(--pc-gold);
+  border-radius: 50%;
+
+  background: #171717;
+  color: var(--pc-gold);
+
+  font-size: 9px;
+  letter-spacing: 0.5px;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+:root[data-theme="light"] .process-step-marker {
+  background: #F3EFE6;
+}
+
+.process-step:hover .process-step-marker {
+  background: var(--pc-gold);
+  color: #171717;
+  box-shadow: 0 0 20px rgba(214, 189, 139, 0.2);
+}
+
+.process-step-detail {
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: var(--pc-gold);
+
+  font-size: 8px;
+  letter-spacing: 1.7px;
+}
+
+.process-step-content h3 {
+  margin: 0 0 13px;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(25px, 2.7vw, 35px);
+  font-weight: 400;
+}
+
+.process-step-content p {
+  max-width: 260px;
+
+  margin: 0;
+
+  color: var(--pc-muted);
+
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+/* ========================================
+   CONTACT CTA
+======================================== */
+
+.process-contact-cta {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 550px;
+  padding: 85px 35px 65px;
+
+  border-top: 1px solid var(--pc-border);
+  border-bottom: 1px solid var(--pc-border);
+
+  background:
+    radial-gradient(
+      ellipse at 50% 48%,
+      rgba(214, 189, 139, 0.11),
+      transparent 55%
+    ),
+    var(--pc-panel);
+
+  overflow: hidden;
+  text-align: center;
+}
+
+.process-cta-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 750px;
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition:
+    opacity 0.9s ease 0.55s,
+    transform 0.9s ease 0.55s;
+}
+
+.process-contact-visible .process-cta-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process-cta-eyebrow {
+  display: block;
+
+  margin-bottom: 25px;
+
+  color: var(--pc-gold);
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.process-cta-content h2 {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(48px, 7vw, 92px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.process-cta-content > p {
+  max-width: 510px;
+
+  margin: 25px auto 35px;
+
+  color: var(--pc-muted);
+
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+/* ========================================
+   CTA BUTTON
+======================================== */
+
+.process-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+
+  min-height: 53px;
+  padding: 0 24px;
+
+  border: 1px solid var(--pc-gold);
+
+  color: var(--pc-gold);
+  text-decoration: none;
+
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+
+  transition:
+    color 0.35s ease,
+    background 0.35s ease,
+    gap 0.35s ease;
+}
+
+.process-cta-button:hover {
+  gap: 30px;
+
+  background: var(--pc-gold);
+  color: #171717;
+}
+
+.process-cta-arrow {
+  font-size: 19px;
+  line-height: 1;
+}
+
+/* ========================================
+   DECORATIVE WORDMARK
+   RESPONSIVE CENTERED BRAND TEXT
+======================================== */
+
+.process-cta-decoration {
+  position: absolute;
+  z-index: 0;
+
+  left: 50%;
+  bottom: 15px;
+
+  width: max-content;
+  max-width: calc(100% - 30px);
+
+  transform: translateX(-50%);
+
+  color: var(--pc-gold);
+  opacity: 0.045;
+
+  font-family: "Inter", sans-serif;
+  font-size: clamp(45px, 10vw, 150px);
+  font-weight: 700;
+  letter-spacing: clamp(-5px, -0.45vw, -2px);
+
+  line-height: 1;
+  white-space: nowrap;
+  text-align: center;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ========================================
+   BOTTOM TEXT
+======================================== */
+
+.process-cta-bottom {
+  position: absolute;
+  z-index: 2;
+
+  right: 30px;
+  bottom: 22px;
+  left: 30px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  color: var(--pc-muted);
+
+  font-size: 8px;
+  letter-spacing: 1.7px;
+}
+
+/* ========================================
+   RESPONSIVE — TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .process-contact {
+    padding: 105px 6% 70px;
+  }
+
+  .process-heading-content {
+    grid-template-columns: 1fr;
+    gap: 23px;
+  }
+
+  .process-heading-content > p {
+    max-width: 600px;
+  }
+
+  .process-steps {
+    gap: 18px;
+  }
+
+  .process-step-content h3 {
+    font-size: 27px;
+  }
+
+  .process-step-content p {
+    font-size: 10px;
+  }
+
+  .process-contact-cta {
+    min-height: 500px;
+  }
+
+  .process-cta-decoration {
+    font-size: clamp(55px, 11vw, 110px);
+    letter-spacing: -4px;
+  }
+
+  .process-cta-bottom {
+    right: 20px;
+    left: 20px;
+  }
+}
+
+/* ========================================
+   RESPONSIVE — MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+  .process-contact {
+    padding: 85px 6% 55px;
+  }
+
+  .process-heading {
+    margin-bottom: 65px;
+  }
+
+  .process-eyebrow {
+    margin-bottom: 25px;
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .process-heading-content h2 {
+    font-size: clamp(39px, 10vw, 55px);
+    letter-spacing: -1.5px;
+  }
+
+  .process-heading-content > p {
+    font-size: 12px;
+  }
+
+  /* VERTICAL TIMELINE */
+
+  .process-timeline {
+    margin-bottom: 90px;
+    padding-left: 5px;
+  }
+
+  .process-track {
+    top: 0;
+    bottom: 0;
+    left: 19px;
+    right: auto;
+
+    width: 1px;
+    height: auto;
+  }
+
+  .process-track-progress {
+    width: 100%;
+    height: 0;
+
+    transition: height 1.8s ease 0.4s;
+  }
+
+  .process-contact-visible .process-track-progress {
+    width: 100%;
+    height: 100%;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: 39px 1fr;
+    gap: 20px;
+  }
+
+  .process-step-marker {
+    margin: 0;
+  }
+
+  .process-step-content {
+    padding-top: 3px;
+  }
+
+  .process-step-detail {
+    margin-bottom: 9px;
+  }
+
+  .process-step-content h3 {
+    font-size: 29px;
+  }
+
+  .process-step-content p {
+    max-width: 420px;
+    font-size: 11px;
+  }
+
+  /* CONTACT CTA */
+
+  .process-contact-cta {
+    min-height: 480px;
+    padding: 65px 18px 85px;
+  }
+
+  .process-cta-eyebrow {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .process-cta-content h2 {
+    font-size: clamp(43px, 11vw, 62px);
+    letter-spacing: -1.5px;
+  }
+
+  .process-cta-content > p {
+    margin: 20px auto 28px;
+    font-size: 11px;
+  }
+
+  .process-cta-button {
+    min-height: 49px;
+    gap: 15px;
+    padding: 0 17px;
+    font-size: 8px;
+  }
+
+  /* WORDMARK — MOBILE */
+
+  .process-cta-decoration {
+    bottom: 55px;
+    font-size: clamp(42px, 12vw, 75px);
+    letter-spacing: -2px;
+  }
+
+  /* BOTTOM METADATA */
+
+  .process-cta-bottom {
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+
+    flex-direction: column;
+    gap: 8px;
+
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 380px) {
+  .process-step {
+    gap: 14px;
+  }
+
+  .process-step-content h3 {
+    font-size: 25px;
+  }
+
+  .process-contact-cta {
+    min-height: 450px;
+  }
+
+  .process-cta-content h2 {
+    font-size: 42px;
+  }
+
+  .process-cta-decoration {
+    bottom: 60px;
+    font-size: 39px;
+    letter-spacing: -2px;
+  }
+
+  .process-cta-bottom {
+    font-size: 6px;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .process-heading,
+  .process-step,
+  .process-cta-content {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .process-track-progress {
+    width: 100%;
+    height: 100%;
+    transition: none;
+  }
+}

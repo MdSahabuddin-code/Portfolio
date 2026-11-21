@@ -3,6 +3,8 @@ import AboutBackground from "../components/AboutBackground";
 import ServicesHero from "../section/services/ServicesHero";
 import ServicesOverview from "../section/services/ServicesOverview";
 import WebAppDevelopment from "../section/services/WebAppDevelopment";
+import ProductsAndAcademic from "../section/services/ProductsAndAcademic";
+import ProcessContact from "../section/services/ProcessContact";
 
 function Services() {
   return (
@@ -11,6 +13,8 @@ function Services() {
       <ServicesHero />
       <ServicesOverview />
       <WebAppDevelopment />
+      <ProductsAndAcademic />
+      <ProcessContact />
     </main>
   );
 }
