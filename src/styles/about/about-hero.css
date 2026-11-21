@@ -1,0 +1,331 @@
+
+/* ========================================
+   ABOUT HERO
+   EDITORIAL STUDIO INTRODUCTION
+   GLOBAL BACKGROUND + CINEMATIC PARALLAX
+======================================== */
+
+.about-hero {
+  --about-bg: #171717;
+  --about-text: #F3EFE6;
+  --about-muted: #A9A398;
+  --about-gold: #D6BD8B;
+
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  /* Background is now shared by the About page */
+  background: transparent;
+
+  color: var(--about-text);
+}
+
+/* ========================================
+   MAIN CONTAINER
+======================================== */
+
+.about-hero-container {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1440px;
+
+  margin: 0 auto;
+  padding: 170px 9% 110px;
+}
+
+/* ========================================
+   EYEBROW
+======================================== */
+
+.about-hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 35px;
+
+  color: var(--about-gold);
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+
+  opacity: 0;
+  transform: translateY(20px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.about-hero-line {
+  width: 42px;
+  height: 1px;
+
+  background: var(--about-gold);
+}
+
+/* ========================================
+   HEADING - CONTENT PARALLAX
+======================================== */
+
+.about-hero-title {
+  position: relative;
+
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(52px, 7.2vw, 108px);
+  font-weight: 400;
+  line-height: 1.08;
+
+  letter-spacing: -3px;
+
+  opacity: 0;
+  transform: translateY(35px);
+
+  /* Independent parallax movement */
+  translate: 0 var(--parallax-content, 0px);
+
+  transition:
+    opacity 1s ease 0.15s,
+    transform 1s ease 0.15s,
+    translate 0.15s linear;
+
+  will-change: transform, translate;
+}
+
+.about-hero-title span {
+  color: var(--about-gold);
+  font-style: italic;
+}
+
+/* ========================================
+   BOTTOM CONTENT
+======================================== */
+
+.about-hero-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+
+  margin-top: 55px;
+
+  opacity: 0;
+  transform: translateY(25px);
+
+  transition:
+    opacity 1s ease 0.35s,
+    transform 1s ease 0.35s;
+}
+
+.about-hero-description {
+  max-width: 480px;
+
+  margin: 0;
+
+  color: var(--about-muted);
+
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* ========================================
+   SCROLL INDICATOR
+======================================== */
+
+.about-hero-scroll {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  color: var(--about-muted);
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+}
+
+.scroll-circle {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(214, 189, 139, 0.5);
+  border-radius: 50%;
+
+  color: var(--about-gold);
+
+  font-size: 18px;
+
+  animation: aboutScroll 2s ease-in-out infinite;
+}
+
+@keyframes aboutScroll {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* ========================================
+   DECORATIVE NUMBER
+======================================== */
+
+.about-hero-number {
+  position: absolute;
+  z-index: 1;
+
+  right: 5%;
+  bottom: 7%;
+
+  color: rgba(214, 189, 139, 0.08);
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(100px, 18vw, 260px);
+  line-height: 1;
+
+  pointer-events: none;
+}
+
+/* ========================================
+   FIREFLIES LAYER
+======================================== */
+
+.about-hero .fireflies-layer {
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ========================================
+   REVEAL ANIMATION
+======================================== */
+
+.about-hero-visible .about-hero-eyebrow,
+.about-hero-visible .about-hero-title,
+.about-hero-visible .about-hero-bottom {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   LIGHT THEME
+======================================== */
+
+:root[data-theme="light"] .about-hero {
+  --about-bg: #F3EFE6;
+  --about-text: #171717;
+  --about-muted: #716B61;
+  --about-gold: #9B7942;
+}
+
+:root[data-theme="light"] .about-hero-number {
+  color: rgba(155, 121, 66, 0.09);
+}
+
+:root[data-theme="light"] .scroll-circle {
+  border-color: rgba(155, 121, 66, 0.5);
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .about-hero-container {
+    padding: 160px 7% 100px;
+  }
+
+  .about-hero-title {
+    letter-spacing: -2px;
+  }
+
+  .about-hero-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+  .about-hero {
+    min-height: 90svh;
+  }
+
+  .about-hero-container {
+    padding: 150px 7% 90px;
+  }
+
+  .about-hero-eyebrow {
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+  }
+
+  .about-hero-title {
+    font-size: clamp(43px, 11vw, 65px);
+    line-height: 1.12;
+    letter-spacing: -1.8px;
+  }
+
+  .about-hero-bottom {
+    margin-top: 35px;
+    gap: 25px;
+  }
+
+  .about-hero-description {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .about-hero-scroll {
+    font-size: 9px;
+  }
+
+  .about-hero-number {
+    right: 4%;
+    bottom: 3%;
+    font-size: 110px;
+  }
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero-title {
+    transform: none;
+    translate: none;
+    will-change: auto;
+  }
+
+  .scroll-circle {
+    animation: none;
+  }
+}
