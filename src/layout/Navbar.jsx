@@ -1,20 +1,22 @@
 
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+
 import "../styles/navbar.css";
 
 import darkLogo from "../assets/logo/S-DevWorks-Dark.png";
 import lightLogo from "../assets/logo/S-DevWorks-Light.png";
 
 function Navbar() {
-  const [activePage, setActivePage] = useState("Home");
   const [darkMode, setDarkMode] = useState(true);
+  const location = useLocation();
 
   const navItems = [
-    "Home",
-    "About",
-    "Projects",
-    "Services",
-    "Contact",
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Projects", path: "/projects" },
+    { name: "Services", path: "/services" },
+    { name: "Contact", path: "/contact" },
   ];
 
   function toggleTheme(isLightMode) {
@@ -30,25 +32,25 @@ function Navbar() {
     <header className="navbar">
 
       {/* Dynamic Logo */}
-      <div className="navbar-logo">
+      <Link to="/" className="navbar-logo">
         <img
           src={darkMode ? darkLogo : lightLogo}
           alt="S-DevWorks"
         />
-      </div>
+      </Link>
 
       {/* Navigation Links */}
       <nav className="nav-menu">
         {navItems.map((item) => (
-          <button
-            key={item}
+          <Link
+            key={item.name}
+            to={item.path}
             className={`nav-link ${
-              activePage === item ? "active" : ""
+              location.pathname === item.path ? "active" : ""
             }`}
-            onClick={() => setActivePage(item)}
           >
-            {item}
-          </button>
+            {item.name}
+          </Link>
         ))}
       </nav>
 
