@@ -2,6 +2,7 @@
 /* ========================================
    CONTACT CTA
    CINEMATIC TYPEWRITER SECTION
+   FULLY RESPONSIVE BACKGROUND
    GLOBAL LIGHT / DARK THEME
 ======================================== */
 
@@ -97,10 +98,9 @@
    FIREFLIES
 ======================================== */
 
-.contact-cta .fireflies-container {
+.contact-cta .fireflies-layer {
   position: absolute;
   inset: 0;
-
   z-index: 1;
   pointer-events: none;
 }
@@ -149,25 +149,18 @@
 
 .cta-eyebrow {
   font-family: "Inter", sans-serif;
-
   font-size: 11px;
   font-weight: 500;
-
   letter-spacing: 3px;
-
   color: var(--cta-gold);
-
   transition: color 0.55s ease;
 }
 
 .cta-number {
   font-family: "Inter", sans-serif;
-
   font-size: 12px;
   letter-spacing: 2px;
-
   color: var(--cta-muted);
-
   transition: color 0.55s ease;
 }
 
@@ -177,7 +170,6 @@
 
 .cta-content {
   position: relative;
-
   padding: 75px 0 65px;
 }
 
@@ -189,7 +181,6 @@
   max-width: 1100px;
 
   font-family: "Playfair Display", serif;
-
   font-size: clamp(48px, 7.5vw, 105px);
   font-weight: 400;
 
@@ -197,22 +188,18 @@
   letter-spacing: -3px;
 
   color: var(--cta-ivory);
-
   transition: color 0.55s ease;
 }
 
 .cta-heading-line {
   display: block;
-
   min-height: 1.2em;
-
   white-space: nowrap;
 }
 
 .cta-heading-gold {
   color: var(--cta-gold);
   font-style: italic;
-
   transition: color 0.55s ease;
 }
 
@@ -227,22 +214,18 @@
   height: 0.85em;
 
   margin-left: 6px;
-
   vertical-align: -0.02em;
 
   background: var(--cta-gold);
-
   animation: ctaCursorBlink 0.8s steps(2, start) infinite;
 }
 
 @keyframes ctaCursorBlink {
-  0%,
-  49% {
+  0%, 49% {
     opacity: 1;
   }
 
-  50%,
-  100% {
+  50%, 100% {
     opacity: 0;
   }
 }
@@ -253,14 +236,11 @@
 
 .cta-description {
   max-width: 470px;
-
   margin-top: 35px;
 
   font-family: "Inter", sans-serif;
-
   font-size: 15px;
   font-weight: 300;
-
   line-height: 1.9;
 
   color: var(--cta-muted);
@@ -277,7 +257,6 @@
 .cta-container.cta-complete .cta-description {
   opacity: 1;
   transform: translateY(0);
-
   transition-delay: 0.15s, 0.15s, 0s;
 }
 
@@ -291,7 +270,6 @@
   justify-content: space-between;
 
   padding-top: 30px;
-
   border-top: 1px solid var(--cta-border);
 
   opacity: 0;
@@ -306,7 +284,6 @@
 .cta-container.cta-complete .cta-bottom {
   opacity: 1;
   transform: translateY(0);
-
   transition-delay: 0.4s, 0.4s, 0s;
 }
 
@@ -319,7 +296,6 @@
 
   display: inline-flex;
   align-items: center;
-
   gap: 35px;
 
   padding: 17px 24px;
@@ -328,11 +304,9 @@
   color: var(--cta-button-text);
 
   border-radius: 50px;
-
   text-decoration: none;
 
   font-family: "Inter", sans-serif;
-
   font-size: 13px;
   font-weight: 600;
 
@@ -346,18 +320,14 @@
 .cta-button:hover {
   background: var(--cta-ivory);
   color: var(--cta-bg);
-
   transform: translateY(-4px);
 
-  box-shadow:
-    0 12px 35px rgba(100, 80, 45, 0.16);
+  box-shadow: 0 12px 35px rgba(100, 80, 45, 0.16);
 }
 
 .cta-arrow {
   display: inline-block;
-
   font-size: 19px;
-
   transition: transform 0.35s ease;
 }
 
@@ -367,33 +337,35 @@
 
 .cta-brand {
   font-family: "Inter", sans-serif;
-
   font-size: 11px;
   font-weight: 500;
-
   letter-spacing: 3px;
-
   color: var(--cta-muted);
-
   transition: color 0.55s ease;
 }
 
 /* ========================================
    DECORATIVE BACKGROUND TYPOGRAPHY
+   LIFTED ABOVE FOOTER
 ======================================== */
 
 .cta-decoration {
   position: absolute;
 
-  bottom: -65px;
-  right: 3%;
+  left: 50%;
+  right: auto;
+  bottom: -15px;
+
+  width: 100%;
+  max-width: 100%;
+
+  text-align: center;
 
   font-family: "Playfair Display", serif;
-
-  font-size: clamp(90px, 16vw, 230px);
+  font-size: clamp(40px, 12vw, 190px);
   font-weight: 700;
 
-  letter-spacing: -10px;
+  letter-spacing: -0.065em;
 
   color: var(--cta-decoration);
 
@@ -401,20 +373,18 @@
 
   pointer-events: none;
   user-select: none;
-
   z-index: 0;
 
-  animation:
-    ctaTextFloat 10s ease-in-out infinite alternate;
+  animation: ctaTextFloat 10s ease-in-out infinite alternate;
 }
 
 @keyframes ctaTextFloat {
   from {
-    transform: translate3d(0, -8px, 0);
+    transform: translate3d(-50%, -8px, 0);
   }
 
   to {
-    transform: translate3d(0, 12px, 0);
+    transform: translate3d(-50%, 12px, 0);
   }
 }
 
@@ -434,6 +404,44 @@
 
   .cta-heading {
     letter-spacing: -2px;
+  }
+
+  .cta-decoration {
+    bottom: 5px;
+    font-size: clamp(38px, 10vw, 95px);
+    letter-spacing: -0.065em;
+  }
+}
+
+/* ========================================
+   COMPACT LAPTOP / SPLIT SCREEN
+======================================== */
+
+@media (min-width: 651px) and (max-width: 1100px) {
+  .contact-cta {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  .cta-content {
+    padding-top: 60px;
+    padding-bottom: 55px;
+  }
+
+  .cta-heading {
+    font-size: clamp(40px, 6.2vw, 76px);
+    letter-spacing: -2px;
+  }
+
+  .cta-decoration {
+    bottom: 15px;
+    font-size: clamp(35px, 8vw, 85px);
+    letter-spacing: -0.07em;
+  }
+
+  .cta-eyebrow {
+    font-size: 10px;
+    letter-spacing: 2px;
   }
 }
 
@@ -485,7 +493,6 @@
 
   .cta-description {
     margin-top: 25px;
-
     font-size: 13px;
     line-height: 1.8;
   }
@@ -506,11 +513,31 @@
   }
 
   .cta-decoration {
-    bottom: -25px;
-    right: -10px;
+    bottom: 25px;
+    font-size: clamp(24px, 7.5vw, 48px);
+    letter-spacing: -0.07em;
+  }
+}
 
-    font-size: 100px;
-    letter-spacing: -5px;
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 380px) {
+  .contact-cta {
+    padding-right: 19px;
+    padding-left: 19px;
+  }
+
+  .cta-decoration {
+    bottom: 20px;
+    font-size: clamp(22px, 7vw, 28px);
+    letter-spacing: -0.07em;
+  }
+
+  .cta-heading {
+    font-size: clamp(32px, 8.8vw, 36px);
+    letter-spacing: -1px;
   }
 }
 
