@@ -1,0 +1,193 @@
+
+/* ========================================
+   ABOUT PAGE — GLOBAL BACKGROUND
+======================================== */
+
+.about-page {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 100vh;
+  overflow: clip;
+  background: #171717;
+}
+
+.about-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #171717;
+}
+
+/* ========================================
+   FLOWING GOLDEN GEOMETRY
+======================================== */
+
+.about-background-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  opacity: 0.8;
+}
+
+.about-curves circle,
+.about-curves path {
+  fill: none;
+  stroke: url(#gold-curve);
+  stroke-width: 1.1;
+  vector-effect: non-scaling-stroke;
+}
+
+.about-curves .curve-highlight {
+  stroke: rgba(235, 185, 104, 0.65);
+  stroke-width: 1.8;
+}
+
+.about-curve-glows circle,
+.about-curve-glows path {
+  fill: none;
+  stroke: #D6BD8B;
+  stroke-width: 5;
+  opacity: 0.22;
+  filter: url(#curve-glow);
+}
+
+.about-light-points circle:not([fill]) {
+  fill: #FFD88A;
+  filter: drop-shadow(0 0 8px #F5B84C);
+}
+
+/* ========================================
+   AMBIENT LIGHTING
+======================================== */
+
+.about-background-glow {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.12;
+  background: #B88743;
+  animation: aboutAmbientFloat 18s ease-in-out infinite alternate;
+}
+
+.about-glow-one {
+  top: -250px;
+  right: -180px;
+}
+
+.about-glow-two {
+  bottom: -300px;
+  left: -200px;
+  animation-delay: -8s;
+}
+
+@keyframes aboutAmbientFloat {
+  from {
+    transform: translate3d(0, -15px, 0) scale(0.95);
+  }
+
+  to {
+    transform: translate3d(30px, 30px, 0) scale(1.1);
+  }
+}
+
+/* ========================================
+   VIGNETTE
+======================================== */
+
+.about-background-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15, 15, 15, 0.12),
+      transparent 55%,
+      rgba(15, 15, 15, 0.18)
+    ),
+    radial-gradient(
+      ellipse at center,
+      transparent 25%,
+      rgba(0, 0, 0, 0.32) 100%
+    );
+}
+
+/* ========================================
+   CONTENT LAYERING
+======================================== */
+
+.about-page > *:not(.about-background) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================================
+   LIGHT THEME
+======================================== */
+
+:root[data-theme="light"] .about-page,
+:root[data-theme="light"] .about-background {
+  background: #F3EFE6;
+}
+
+:root[data-theme="light"] .about-curves circle,
+:root[data-theme="light"] .about-curves path {
+  stroke: rgba(155, 121, 66, 0.55);
+}
+
+:root[data-theme="light"] .about-curves .curve-highlight {
+  stroke: rgba(155, 121, 66, 0.75);
+}
+
+:root[data-theme="light"] .about-curve-glows circle,
+:root[data-theme="light"] .about-curve-glows path {
+  stroke: #B58A4C;
+  opacity: 0.16;
+}
+
+:root[data-theme="light"] .about-background-glow {
+  background: #B58A4C;
+  opacity: 0.1;
+}
+
+:root[data-theme="light"] .about-background-vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    rgba(155, 121, 66, 0.09) 100%
+  );
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 700px) {
+  .about-background-art {
+    width: 150%;
+    max-width: none;
+    left: -15%;
+    opacity: 0.6;
+  }
+
+  .about-background-glow {
+    width: 420px;
+    height: 420px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-background-glow {
+    animation: none;
+  }
+}
