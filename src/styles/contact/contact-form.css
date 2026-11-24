@@ -867,3 +867,22 @@
     transform: none;
   }
 }
+/* Edtit this so nav not expanded in smaller screen */
+@media (max-width: 650px) {
+  html,
+  body,
+  #root {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .contact-page {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .contact-form-section {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+}
