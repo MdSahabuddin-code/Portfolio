@@ -1,57 +1,94 @@
+
+/* ==========================================
+   S-DEVWORKS
+   OWNERSHIP & LEADERSHIP
+   PREMIUM EDITORIAL THEME
+   DARK + LIGHT MODE
+   SHARED ABOUT BACKGROUND
+========================================== */
+
 .ownership-leadership {
-  --ownership-text: #f0f4f8;
-  --ownership-muted: #93a6bc;
-  --ownership-panel: #111c2c;
-  --ownership-border: #1c3446;
-  --ownership-blue: #536fe0;
+  --ownership-bg: #171717;
+  --ownership-panel: #20201e;
+  --ownership-panel-soft: #25231f;
+
+  --ownership-text: #f3efe6;
+  --ownership-muted: #bdb5a7;
+  --ownership-subtle: #8f887c;
+
+  --ownership-gold: #d6bd8b;
+  --ownership-gold-dark: #9b7942;
+
+  --ownership-border: #3b3935;
+  --ownership-border-soft: rgba(214, 189, 139, 0.16);
+
   position: relative;
   isolation: isolate;
   min-height: 100svh;
-  padding: clamp(110px, 12vw, 180px) 7vw clamp(90px, 10vw, 140px);
+
+  padding:
+    clamp(110px, 12vw, 180px)
+    7vw
+    clamp(90px, 10vw, 140px);
+
   overflow: hidden;
+
   color: var(--ownership-text);
-  background:
-    radial-gradient(circle at 12% 18%, rgba(52, 126, 128, 0.14), transparent 30%),
-    #121c2c;
+
+  /* Shared AboutBackground remains visible */
+  background: transparent;
+
+  transition: color 0.5s ease;
 }
+
+/* ==========================================
+   SECTION CONTAINER
+========================================== */
 
 .ownership-leadership-container {
   position: relative;
   z-index: 2;
+
   width: min(1440px, 100%);
   margin: 0 auto;
 }
 
+/* ==========================================
+   SECTION HEADER
+========================================== */
+
 .ownership-leadership-header {
-  max-width: 760px;
+  max-width: 800px;
   margin-bottom: clamp(45px, 7vw, 85px);
 }
 
-.ownership-leadership-eyebrow,
-.company-timeline-eyebrow {
+.ownership-leadership-eyebrow {
   display: flex;
   align-items: center;
   gap: 13px;
+
   margin-bottom: 30px;
-  color: #61c5c6;
+
+  color: var(--ownership-gold);
+
   font-family: "Inter", sans-serif;
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 3px;
 }
 
-.ownership-leadership-line,
-.company-timeline-line {
+.ownership-leadership-line {
   width: 38px;
   height: 1px;
-  background: #61c5c6;
+
+  background: var(--ownership-gold);
 }
 
-.ownership-leadership-header h2,
-.company-timeline-header h2,
-.about-cta h2 {
+.ownership-leadership-header h2 {
   margin: 0;
-  color: #f3efe6;
+
+  color: var(--ownership-text);
+
   font-family: "Playfair Display", serif;
   font-size: clamp(44px, 6vw, 86px);
   font-weight: 400;
@@ -59,56 +96,95 @@
   letter-spacing: -2px;
 }
 
-.ownership-leadership-header h2 em,
-.company-timeline-header h2 em,
-.about-cta h2 em {
-  color: #d6bd8b;
+.ownership-leadership-header h2 em {
+  color: var(--ownership-gold);
   font-style: italic;
 }
 
 .ownership-leadership-header p {
-  max-width: 620px;
+  max-width: 650px;
   margin: 28px 0 0;
-  color: #a9a398;
+
+  color: var(--ownership-muted);
+
   font-family: "Inter", sans-serif;
   font-size: 14px;
+  font-weight: 400;
   line-height: 1.9;
 }
+
+/* ==========================================
+   FOUNDER GRID
+========================================== */
 
 .founder-card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+
   gap: clamp(25px, 4vw, 48px);
   align-items: start;
 }
+
+/* ==========================================
+   FOUNDER CARD STAGE
+========================================== */
 
 .ownership-card-stage {
   min-width: 0;
   perspective: 1400px;
 }
 
+/* ==========================================
+   FOUNDER CARD
+========================================== */
+
 .ownership-card {
   --ownership-rotate-x: 0deg;
   --ownership-rotate-y: 0deg;
   --ownership-glare-x: 50%;
   --ownership-glare-y: 50%;
+
   position: relative;
+
   display: flex;
   flex-direction: column;
+
   min-height: 590px;
   overflow: hidden;
-  border: 8px solid #173343;
-  border-radius: 22px;
-  background: #111c2c;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.38);
-  transform: rotateX(var(--ownership-rotate-x)) rotateY(var(--ownership-rotate-y));
+
+  border: 1px solid var(--ownership-border);
+  border-radius: 5px;
+
+  background: var(--ownership-panel);
+
+  box-shadow:
+    0 25px 65px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  transform:
+    rotateX(var(--ownership-rotate-x))
+    rotateY(var(--ownership-rotate-y));
+
   transform-style: preserve-3d;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
 }
 
 .ownership-card:hover {
-  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.52);
+  border-color: rgba(214, 189, 139, 0.48);
+
+  box-shadow:
+    0 35px 85px rgba(0, 0, 0, 0.35),
+    0 0 35px rgba(214, 189, 139, 0.045);
 }
+
+/* ==========================================
+   CARD LIGHTING
+========================================== */
 
 .ownership-card-glow,
 .ownership-card-glare {
@@ -119,21 +195,40 @@
 
 .ownership-card-glow {
   z-index: 0;
+
   background:
-    radial-gradient(circle at 25% 7%, rgba(89, 154, 142, 0.5), transparent 33%),
-    linear-gradient(140deg, rgba(214, 189, 139, 0.12), transparent 42%);
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(214, 189, 139, 0.12),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(214, 189, 139, 0.045),
+      transparent 45%
+    );
 }
 
 .ownership-card-glare {
   z-index: 4;
   opacity: 0;
-  background: radial-gradient(circle at var(--ownership-glare-x) var(--ownership-glare-y), rgba(255, 255, 255, 0.16), transparent 36%);
-  transition: opacity 0.25s ease;
+
+  background: radial-gradient(
+    circle at var(--ownership-glare-x) var(--ownership-glare-y),
+    rgba(255, 255, 255, 0.09),
+    transparent 38%
+  );
+
+  transition: opacity 0.35s ease;
 }
 
 .ownership-card:hover .ownership-card-glare {
   opacity: 1;
 }
+
+/* ==========================================
+   CARD LAYERS
+========================================== */
 
 .ownership-card-header,
 .ownership-card-body,
@@ -142,11 +237,30 @@
   z-index: 1;
 }
 
+/* ==========================================
+   CARD HEADER
+========================================== */
+
 .ownership-card-header {
   min-height: 310px;
-  padding: 14px 26px 20px;
+
+  padding: 22px 26px 25px;
+
   text-align: center;
-  background: linear-gradient(155deg, rgba(133, 153, 143, 0.5), rgba(26, 34, 45, 0.64) 55%, rgba(17, 28, 44, 0.95));
+
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(214, 189, 139, 0.12),
+      transparent 65%
+    ),
+    linear-gradient(
+      180deg,
+      var(--ownership-panel-soft),
+      var(--ownership-panel)
+    );
+
+  border-bottom: 1px solid var(--ownership-border-soft);
 }
 
 .ownership-card-topline {
@@ -155,174 +269,278 @@
   align-items: center;
 }
 
+/* ==========================================
+   STATUS & BADGE
+========================================== */
+
 .ownership-card-status,
 .ownership-card-badge {
   display: inline-flex;
   align-items: center;
-  min-height: 36px;
-  border-radius: 22px;
+
+  min-height: 32px;
+  border-radius: 2px;
+
   font-family: "Inter", sans-serif;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .ownership-card-status {
   gap: 8px;
-  padding: 0 15px;
-  color: #e8f0f4;
-  background: rgba(37, 74, 91, 0.88);
+  padding: 0 11px;
+
+  color: var(--ownership-muted);
+
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--ownership-border);
 }
 
 .ownership-card-status-dot {
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
+
   border-radius: 50%;
-  background: #36dca1;
-  box-shadow: 0 0 0 4px rgba(54, 220, 161, 0.16);
+
+  background: #8caa83;
+  box-shadow: 0 0 9px rgba(140, 170, 131, 0.4);
 }
 
 .ownership-card-badge {
   justify-content: center;
-  min-width: 62px;
-  padding: 0 13px;
-  border: 1px solid #00a7bb;
-  color: #5de1dd;
-  letter-spacing: 1px;
+
+  min-width: 48px;
+  padding: 0 10px;
+
+  color: var(--ownership-gold);
+
+  border: 1px solid rgba(214, 189, 139, 0.4);
+  background: rgba(214, 189, 139, 0.055);
+
+  letter-spacing: 1.5px;
 }
+
+/* ==========================================
+   FOUNDER PORTRAIT
+========================================== */
 
 .ownership-card-portrait {
   width: 142px;
   height: 142px;
-  margin: 28px auto 15px;
+
+  margin: 28px auto 17px;
   overflow: hidden;
-  border: 4px solid rgba(17, 28, 44, 0.7);
+
+  border: 2px solid rgba(214, 189, 139, 0.55);
   border-radius: 50%;
-  background: #263345;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.34);
+
+  background: var(--ownership-panel-soft);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 0 7px rgba(214, 189, 139, 0.045);
 }
 
 .ownership-card-portrait img {
   display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
   object-position: center top;
+
+  transition: transform 0.6s ease;
 }
+
+.ownership-card:hover .ownership-card-portrait img {
+  transform: scale(1.07);
+}
+
+/* ==========================================
+   FOUNDER NAME & ROLE
+========================================== */
 
 .ownership-card-name {
   margin: 0;
-  color: #f1f5fa;
-  font-family: "Inter", sans-serif;
+
+  color: var(--ownership-text);
+
+  font-family: "Playfair Display", serif;
   font-size: clamp(25px, 3vw, 38px);
-  font-weight: 800;
-  letter-spacing: -1px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
 }
 
 .ownership-card-role {
   margin: 10px 0 0;
-  color: #a4b7ca;
+
+  color: var(--ownership-gold);
+
   font-family: "Inter", sans-serif;
-  font-size: clamp(10px, 1.15vw, 15px);
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 600;
   letter-spacing: 2px;
 }
 
 .ownership-card-accent {
-  width: 185px;
-  height: 2px;
-  margin: 14px auto 0;
-  background: linear-gradient(90deg, transparent, #008fbd, transparent);
+  width: 100px;
+  height: 1px;
+
+  margin: 18px auto 0;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--ownership-gold),
+    transparent
+  );
 }
+
+/* ==========================================
+   CARD BODY
+========================================== */
 
 .ownership-card-body {
   flex: 1;
   min-height: 215px;
-  padding: 24px 28px 16px;
+
+  padding: 28px 30px 20px;
+
   overflow-y: auto;
-  scrollbar-color: #406070 transparent;
+
+  scrollbar-color: var(--ownership-gold-dark) transparent;
   scrollbar-width: thin;
 }
 
 .ownership-card-label {
   display: block;
-  margin-bottom: 17px;
-  color: #f1f5fa;
+  margin-bottom: 16px;
+
+  color: var(--ownership-gold);
+
   font-family: "Inter", sans-serif;
-  font-size: 15px;
-  font-weight: 800;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .ownership-card-description,
 .ownership-card-panel > p,
 .ownership-card-timeline-item p {
   margin: 0;
-  color: #94a8bf;
+
+  color: var(--ownership-muted);
+
   font-family: "Inter", sans-serif;
-  font-size: clamp(12px, 1.3vw, 17px);
-  line-height: 1.8;
+  font-size: clamp(12px, 1.3vw, 15px);
+  line-height: 1.9;
 }
 
 .ownership-card-focus {
   display: none;
 }
 
+/* ==========================================
+   SOCIAL LINKS
+========================================== */
+
 .ownership-card-socials {
   display: flex;
-  gap: 16px;
-  margin-top: 21px;
+  gap: 12px;
+
+  margin-top: 24px;
 }
 
 .ownership-card-socials span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid var(--ownership-border);
   border-radius: 50%;
-  color: #afc0d5;
-  background: rgba(23, 39, 61, 0.9);
+
+  color: var(--ownership-gold);
+  background: rgba(214, 189, 139, 0.035);
+
   font-family: "Inter", sans-serif;
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 17px;
+  font-weight: 600;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.ownership-card-socials span:hover {
+  color: var(--ownership-bg);
+  background: var(--ownership-gold);
+  border-color: var(--ownership-gold);
+
+  transform: translateY(-3px);
 }
 
 .ownership-card-socials span:nth-child(3) {
-  font-size: 28px;
+  font-size: 23px;
 }
+
+/* ==========================================
+   EXPERIENCE TIMELINE
+========================================== */
 
 .ownership-card-timeline {
   display: grid;
-  gap: 13px;
+  gap: 17px;
 }
 
 .ownership-card-timeline-item {
   display: grid;
-  grid-template-columns: 39px 1fr;
+  grid-template-columns: 34px 1fr;
   gap: 12px;
-  padding-bottom: 13px;
-  border-left: 2px solid #536fe0;
-  padding-left: 12px;
+
+  padding: 0 0 16px 13px;
+
+  border-left: 1px solid rgba(214, 189, 139, 0.45);
+  border-bottom: 1px solid var(--ownership-border-soft);
+}
+
+.ownership-card-timeline-item:last-child {
+  border-bottom: 0;
 }
 
 .ownership-card-timeline-item > span {
-  color: #7a8da4;
-  font-family: "Inter", sans-serif;
-  font-size: 10px;
-  font-weight: 700;
+  color: var(--ownership-gold);
+
+  font-family: "Playfair Display", serif;
+  font-size: 15px;
 }
 
 .ownership-card-timeline-item strong {
   display: block;
-  margin-bottom: 3px;
-  color: #f0f4f8;
+  margin-bottom: 6px;
+
+  color: var(--ownership-text);
+
   font-family: "Inter", sans-serif;
   font-size: 12px;
+  font-weight: 600;
 }
 
 .ownership-card-timeline-item p {
   font-size: 11px;
-  line-height: 1.5;
+  line-height: 1.7;
 }
+
+/* ==========================================
+   CONTACT DETAILS
+========================================== */
 
 .ownership-card-contact {
   display: flex;
@@ -334,7 +552,9 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  color: #a6b8ca;
+
+  color: var(--ownership-muted);
+
   font-family: "Inter", sans-serif;
   font-size: 12px;
 }
@@ -343,13 +563,22 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   width: 24px;
-  color: #b6c8d8;
-  font-size: 20px;
+
+  color: var(--ownership-gold);
+  font-size: 18px;
 }
 
 .ownership-card-contact-details a {
-  color: #d7e3ed;
+  color: var(--ownership-text);
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.ownership-card-contact-details a:hover {
+  color: var(--ownership-gold);
 }
 
 .ownership-card-contact-link {
@@ -357,33 +586,69 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
-  min-height: 42px;
-  margin-top: 6px;
-  border-radius: 4px;
-  color: #f5f8fc;
-  background: linear-gradient(90deg, #41a9cc, #536bd0);
+
+  min-height: 45px;
+  margin-top: 8px;
+
+  border: 1px solid var(--ownership-gold);
+  border-radius: 2px;
+
+  color: var(--ownership-bg);
+  background: var(--ownership-gold);
+
   font-family: "Inter", sans-serif;
-  font-size: 11px;
-  font-weight: 800;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
+
+.ownership-card-contact-link:hover {
+  color: var(--ownership-gold);
+  background: transparent;
+}
+
+/* ==========================================
+   CARD TABS
+========================================== */
 
 .ownership-card-tabs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  min-height: 69px;
-  border-top: 1px solid rgba(116, 144, 164, 0.16);
-  background: #111a2b;
+
+  min-height: 65px;
+
+  border-top: 1px solid var(--ownership-border);
+  background: rgba(0, 0, 0, 0.12);
 }
 
 .ownership-card-tabs button {
+  position: relative;
+
   min-width: 0;
+  padding: 10px 5px;
+
   border: 0;
-  border-right: 1px solid rgba(116, 144, 164, 0.08);
-  color: #8ea1b6;
+  border-right: 1px solid var(--ownership-border-soft);
+
+  color: var(--ownership-subtle);
   background: transparent;
+
   font-family: "Inter", sans-serif;
-  font-size: clamp(10px, 1.2vw, 16px);
-  font-weight: 700;
+  font-size: clamp(9px, 1vw, 12px);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease;
 }
 
 .ownership-card-tabs button:last-child {
@@ -392,26 +657,154 @@
 
 .ownership-card-tabs button:hover,
 .ownership-card-tabs button.is-active {
-  color: #eef4fa;
-  background: linear-gradient(135deg, rgba(69, 82, 155, 0.32), rgba(48, 47, 105, 0.18));
-  box-shadow: inset 0 -3px 0 #7a6ce2;
+  color: var(--ownership-gold);
+  background: rgba(214, 189, 139, 0.055);
 }
 
-.ownership-leadership-number,
-.company-timeline-number {
+.ownership-card-tabs button.is-active::after {
+  content: "";
+
+  position: absolute;
+  right: 20%;
+  bottom: 0;
+  left: 20%;
+
+  height: 2px;
+
+  background: var(--ownership-gold);
+}
+
+/* ==========================================
+   BACKGROUND SECTION NUMBER
+========================================== */
+
+.ownership-leadership-number {
   position: absolute;
   right: 4%;
   bottom: 1%;
+
   color: rgba(214, 189, 139, 0.035);
+
   font-family: "Playfair Display", serif;
   font-size: clamp(180px, 28vw, 400px);
   line-height: 1;
+
   pointer-events: none;
+  user-select: none;
 }
+
+/* ==========================================
+   LIGHT THEME
+========================================== */
+
+html[data-theme="light"] .ownership-leadership {
+  --ownership-bg: #f3efe6;
+  --ownership-panel: #faf7f0;
+  --ownership-panel-soft: #eee8dc;
+
+  --ownership-text: #24211c;
+  --ownership-muted: #756d61;
+  --ownership-subtle: #928777;
+
+  --ownership-gold: #9b7942;
+  --ownership-gold-dark: #9b7942;
+
+  --ownership-border: #d8d0c2;
+  --ownership-border-soft: rgba(155, 121, 66, 0.18);
+
+  /* Let the shared light About background show through */
+  background: transparent;
+}
+
+html[data-theme="light"] .ownership-card {
+  box-shadow:
+    0 22px 55px rgba(49, 39, 24, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+html[data-theme="light"] .ownership-card:hover {
+  box-shadow:
+    0 30px 65px rgba(49, 39, 24, 0.12),
+    0 0 25px rgba(155, 121, 66, 0.07);
+}
+
+html[data-theme="light"] .ownership-card-glow {
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(155, 121, 66, 0.11),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(155, 121, 66, 0.045),
+      transparent 45%
+    );
+}
+
+html[data-theme="light"] .ownership-card-glare {
+  background: radial-gradient(
+    circle at var(--ownership-glare-x) var(--ownership-glare-y),
+    rgba(255, 255, 255, 0.55),
+    transparent 38%
+  );
+}
+
+html[data-theme="light"] .ownership-card-status {
+  background: rgba(155, 121, 66, 0.055);
+}
+
+html[data-theme="light"] .ownership-card-contact-link {
+  color: #f3efe6;
+  background: #9b7942;
+  border-color: #9b7942;
+}
+
+html[data-theme="light"] .ownership-card-contact-link:hover {
+  color: #9b7942;
+  background: transparent;
+}
+
+html[data-theme="light"] .ownership-card-tabs {
+  background: rgba(155, 121, 66, 0.035);
+}
+
+html[data-theme="light"] .ownership-card-socials span:hover {
+  color: #f3efe6;
+  background: #9b7942;
+  border-color: #9b7942;
+}
+
+/* ==========================================
+   RESPONSIVE - TABLET
+========================================== */
+
+@media (max-width: 900px) {
+  .ownership-leadership {
+    padding-inline: 5vw;
+  }
+
+  .founder-card-grid {
+    gap: 25px;
+  }
+
+  .ownership-card-header {
+    padding-inline: 18px;
+  }
+
+  .ownership-card-body {
+    padding-inline: 22px;
+  }
+}
+
+/* ==========================================
+   RESPONSIVE - MOBILE
+========================================== */
 
 @media (max-width: 760px) {
   .founder-card-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 
   .ownership-card {
@@ -421,12 +814,53 @@
   .ownership-card-header {
     min-height: 285px;
   }
+
+  .ownership-leadership-header {
+    margin-bottom: 45px;
+  }
+
+  .ownership-leadership-header h2 {
+    letter-spacing: -1px;
+  }
+
+  .ownership-card-name {
+    font-size: clamp(27px, 6vw, 36px);
+  }
 }
 
+/* ==========================================
+   RESPONSIVE - SMALL MOBILE
+========================================== */
+
 @media (max-width: 420px) {
+  .ownership-leadership {
+    padding:
+      100px
+      6vw
+      80px;
+  }
+
+  .ownership-leadership-eyebrow {
+    gap: 9px;
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .ownership-leadership-line {
+    width: 26px;
+  }
+
+  .ownership-leadership-header h2 {
+    font-size: clamp(38px, 11vw, 48px);
+  }
+
+  .ownership-leadership-header p {
+    font-size: 12px;
+  }
+
   .ownership-card {
-    border-width: 5px;
-    border-radius: 16px;
+    min-height: 540px;
+    border-radius: 4px;
   }
 
   .ownership-card-header {
@@ -444,14 +878,39 @@
 
   .ownership-card-status,
   .ownership-card-badge {
-    min-height: 31px;
-    font-size: 10px;
+    min-height: 29px;
+    font-size: 9px;
+  }
+
+  .ownership-card-name {
+    font-size: 27px;
+  }
+
+  .ownership-card-role {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .ownership-card-tabs button {
+    font-size: 9px;
+  }
+
+  .ownership-card-description,
+  .ownership-card-panel > p {
+    font-size: 12px;
   }
 }
 
+/* ==========================================
+   REDUCED MOTION
+========================================== */
+
 @media (prefers-reduced-motion: reduce) {
-  .ownership-card {
+  .ownership-card,
+  .ownership-card-portrait img,
+  .ownership-card-socials span,
+  .ownership-card-tabs button {
     transform: none !important;
-    transition: none;
+    transition: none !important;
   }
 }
