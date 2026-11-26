@@ -109,9 +109,6 @@ function ProjectsHero() {
         PROJECTS
       </div>
 
-      <div className="projects-hero-corner">
-        01 / 04
-      </div>
 
     </section>
   );

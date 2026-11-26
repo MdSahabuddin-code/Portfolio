@@ -343,19 +343,24 @@
   position: absolute;
   z-index: -1;
 
-  right: -35px;
-  bottom: 110px;
+  right: 15px;
+  bottom: 100px;
+
+  max-height: calc(100% - 150px);
 
   font-family: "Inter", sans-serif;
-  font-size: clamp(50px, 8vw, 115px);
+  font-size: clamp(38px, 6vw, 90px);
   font-weight: 600;
-  letter-spacing: 15px;
+  letter-spacing: 10px;
 
   color: var(--ph-text);
   opacity: 0.035;
 
   writing-mode: vertical-rl;
+  white-space: nowrap;
+
   pointer-events: none;
+  user-select: none;
 }
 
 .projects-hero-corner {
@@ -388,7 +393,7 @@
 }
 
 /* ==========================================
-   RESPONSIVE
+   RESPONSIVE - TABLET
 ========================================== */
 
 @media (max-width: 768px) {
@@ -417,9 +422,17 @@
   }
 
   .projects-hero-watermark {
-    display: none;
+    right: 8px;
+    bottom: 80px;
+
+    font-size: 42px;
+    letter-spacing: 6px;
   }
 }
+
+/* ==========================================
+   RESPONSIVE - MOBILE
+========================================== */
 
 @media (max-width: 480px) {
   .projects-hero-content {
@@ -458,6 +471,14 @@
 
   .projects-hero-corner {
     top: 100px;
+  }
+
+  .projects-hero-watermark {
+    right: 5px;
+    bottom: 65px;
+
+    font-size: 30px;
+    letter-spacing: 4px;
   }
 }
 
