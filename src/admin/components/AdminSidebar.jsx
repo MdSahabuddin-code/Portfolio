@@ -1,7 +1,7 @@
 
 import { NavLink } from "react-router-dom";
 
-import logo from "../../assets/logo/S-DevWorks-Dark.png";
+import logo from "../../assets/logo/S-DevWorks-initial.png";
 
 import "../styles/admin-sidebar.css";
 
