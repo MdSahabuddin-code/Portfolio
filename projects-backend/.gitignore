@@ -7,6 +7,7 @@ dist/
 
 # Environment variables and secrets
 .env
+atlas-credentials.env
 .env.*
 !.env.example
 
