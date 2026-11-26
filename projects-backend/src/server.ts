@@ -3,9 +3,11 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 import connectDB from "./config/db";
 import projectRoutes from "./routes/projectRoutes";
+import authRoutes from "./routes/authRoutes";
 
 dotenv.config();
 
@@ -18,12 +20,15 @@ app.use(helmet());
 app.use(
   cors({
     origin: process.env.CLIENT_URL || "http://localhost:5173",
+    credentials: true,
   })
 );
 
 app.use(express.json());
+app.use(cookieParser());
 
 // API Routes
+app.use("/api/auth", authRoutes);
 app.use("/api/projects", projectRoutes);
 
 // Health Check
