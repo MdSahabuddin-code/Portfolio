@@ -34,9 +34,7 @@ function ProjectsHero() {
       className="projects-hero"
       ref={sectionRef}
     >
-      {/* Background */}
-      <div className="projects-hero-background" />
-
+      {/* Subtle overlay over the shared page background */}
       <div className="projects-hero-overlay" />
 
       {/* Fireflies */}
@@ -47,7 +45,7 @@ function ProjectsHero() {
 
         <div className="projects-hero-eyebrow">
           <span className="projects-hero-line" />
-          <span> S-DEVWORKS / OUR CREATIVE UNIVERSE </span>
+          <span>S-DEVWORKS / OUR CREATIVE UNIVERSE</span>
         </div>
 
         <h1 className="projects-hero-title">
@@ -108,7 +106,6 @@ function ProjectsHero() {
       <div className="projects-hero-watermark">
         PROJECTS
       </div>
-
 
     </section>
   );

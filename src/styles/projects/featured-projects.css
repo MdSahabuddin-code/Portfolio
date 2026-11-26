@@ -1,0 +1,487 @@
+
+/* ==========================================
+   S-DEVWORKS
+   FEATURED PROJECT
+   CINEMATIC SHARED BACKGROUND VERSION
+========================================== */
+
+.featured-project-section {
+  --fp-text: #f3efe6;
+  --fp-muted: rgba(243, 239, 230, 0.6);
+  --fp-gold: #d6bd8b;
+  --fp-border: rgba(214, 189, 139, 0.2);
+
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  padding: 130px 0;
+
+  isolation: isolate;
+  overflow: hidden;
+
+  /* Use the shared ProjectsBackground */
+  background: transparent;
+  color: var(--fp-text);
+}
+
+/* ==========================================
+   LIGHT THEME
+========================================== */
+
+:root[data-theme="light"] .featured-project-section {
+  --fp-text: #29251f;
+  --fp-muted: rgba(41, 37, 31, 0.65);
+  --fp-gold: #9b7942;
+  --fp-border: rgba(155, 121, 66, 0.25);
+
+  background: transparent;
+}
+
+/* ==========================================
+   CONTAINER
+========================================== */
+
+.featured-project-container {
+  position: relative;
+  z-index: 2;
+
+  width: min(1200px, 88%);
+  margin: 0 auto;
+}
+
+/* ==========================================
+   SECTION HEADING
+========================================== */
+
+.featured-project-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  margin-bottom: 55px;
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+
+.featured-project-label {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+
+  color: var(--fp-gold);
+}
+
+.featured-project-label > span:first-child {
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+}
+
+.featured-heading-line {
+  width: 40px;
+  height: 1px;
+
+  background: var(--fp-border);
+}
+
+.featured-project-heading > p {
+  max-width: 240px;
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.8;
+
+  color: var(--fp-muted);
+}
+
+/* ==========================================
+   MAIN LAYOUT
+========================================== */
+
+.featured-project-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  align-items: center;
+
+  gap: 65px;
+}
+
+/* ==========================================
+   PROJECT IMAGE
+========================================== */
+
+.featured-project-image-wrapper {
+  position: relative;
+
+  min-height: 480px;
+
+  overflow: hidden;
+
+  background: #252525;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.18),
+    0 0 35px rgba(214, 189, 139, 0.045);
+
+  opacity: 0;
+  transform: translateY(45px);
+
+  transition:
+    opacity 1s ease 0.15s,
+    transform 1s ease 0.15s,
+    box-shadow 0.6s ease;
+}
+
+.featured-project-image-wrapper:hover {
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.25),
+    0 0 45px rgba(214, 189, 139, 0.1);
+}
+
+.featured-project-image {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.featured-project-image-wrapper:hover .featured-project-image {
+  transform: scale(1.06);
+}
+
+.featured-image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.65),
+    transparent 48%
+  );
+
+  pointer-events: none;
+}
+
+.featured-image-index {
+  position: absolute;
+  left: 25px;
+  bottom: 25px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+
+  color: #f3efe6;
+}
+
+/* ==========================================
+   IMAGE OPEN BUTTON
+========================================== */
+
+.featured-image-open {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(243, 239, 230, 0.5);
+  border-radius: 50%;
+
+  background: rgba(23, 23, 23, 0.2);
+  color: #f3efe6;
+
+  font-size: 21px;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(8px);
+
+  transition: all 0.35s ease;
+}
+
+.featured-image-open:hover {
+  background: #d6bd8b;
+  border-color: #d6bd8b;
+  color: #171717;
+  transform: rotate(45deg);
+}
+
+/* ==========================================
+   PROJECT INFORMATION
+========================================== */
+
+.featured-project-information {
+  opacity: 0;
+  transform: translateY(35px);
+
+  transition:
+    opacity 1s ease 0.3s,
+    transform 1s ease 0.3s;
+}
+
+.featured-project-category {
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+
+  color: var(--fp-gold);
+}
+
+.featured-project-information h2 {
+  margin: 25px 0 12px;
+
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 4vw, 55px);
+  font-weight: 400;
+  line-height: 1.15;
+
+  color: var(--fp-text);
+}
+
+.featured-project-information h3 {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+
+  color: var(--fp-muted);
+}
+
+.featured-project-description {
+  margin: 28px 0;
+
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.9;
+
+  color: var(--fp-muted);
+}
+
+/* ==========================================
+   TECHNOLOGIES
+========================================== */
+
+.featured-project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  margin-top: 30px;
+}
+
+.featured-project-technologies span {
+  padding: 9px 13px;
+
+  border: 1px solid var(--fp-border);
+
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+
+  color: var(--fp-muted);
+
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background 0.3s ease;
+}
+
+.featured-project-technologies span:hover {
+  border-color: var(--fp-gold);
+  color: var(--fp-gold);
+  background: rgba(214, 189, 139, 0.045);
+}
+
+/* ==========================================
+   PROJECT LINK
+========================================== */
+
+.featured-project-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  margin-top: 42px;
+  padding: 0 0 12px;
+
+  border: none;
+  border-bottom: 1px solid var(--fp-gold);
+
+  background: transparent;
+
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+
+  color: var(--fp-gold);
+
+  cursor: pointer;
+
+  transition: gap 0.3s ease;
+}
+
+.featured-project-link:hover {
+  gap: 30px;
+}
+
+.featured-project-link span {
+  font-size: 17px;
+}
+
+/* ==========================================
+   BOTTOM DETAILS
+========================================== */
+
+.featured-project-bottom {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 65px;
+  padding-top: 22px;
+
+  border-top: 1px solid var(--fp-border);
+
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+
+  color: var(--fp-muted);
+
+  opacity: 0;
+  transition: opacity 1s ease 0.5s;
+}
+
+/* ==========================================
+   REVEAL ANIMATIONS
+========================================== */
+
+.featured-project-visible .featured-project-heading,
+.featured-project-visible .featured-project-image-wrapper,
+.featured-project-visible .featured-project-information {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.featured-project-visible .featured-project-bottom {
+  opacity: 1;
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 900px) {
+  .featured-project-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .featured-project-image-wrapper {
+    min-height: 430px;
+  }
+
+  .featured-project-information {
+    max-width: 650px;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+  .featured-project-section {
+    padding: 85px 0;
+  }
+
+  .featured-project-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+
+    margin-bottom: 35px;
+  }
+
+  .featured-project-heading > p {
+    max-width: 300px;
+  }
+
+  .featured-project-label {
+    gap: 10px;
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .featured-project-image-wrapper {
+    min-height: 300px;
+  }
+
+  .featured-image-open {
+    width: 40px;
+    height: 40px;
+
+    top: 15px;
+    right: 15px;
+  }
+
+  .featured-image-index {
+    left: 15px;
+    bottom: 15px;
+  }
+
+  .featured-project-information h2 {
+    font-size: 35px;
+  }
+
+  .featured-project-description {
+    font-size: 12px;
+  }
+
+  .featured-project-bottom {
+    margin-top: 45px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .featured-project-heading,
+  .featured-project-image-wrapper,
+  .featured-project-information,
+  .featured-project-bottom,
+  .featured-project-image {
+    animation: none;
+    transition: none;
+  }
+}

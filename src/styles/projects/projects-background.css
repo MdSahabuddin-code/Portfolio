@@ -1,0 +1,431 @@
+
+/* ==========================================
+   S-DEVWORKS
+   PROJECTS PAGE
+   CONTINUOUS LUXURY GOLD BACKGROUND
+========================================== */
+
+/* ==========================================
+   PROJECTS PAGE — BACKGROUND CONTAINER
+========================================== */
+
+.projects-page {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background: #171717;
+}
+
+/* ==========================================
+   SHARED BACKGROUND
+========================================== */
+
+.projects-background {
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+
+  background: #171717;
+}
+
+/* Keep every page section above the shared background */
+
+.projects-page > *:not(.projects-background) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================
+   SVG BACKGROUND ART
+========================================== */
+
+.projects-background-art {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  min-height: 100%;
+
+  overflow: visible;
+
+  opacity: 0.95;
+
+  pointer-events: none;
+}
+
+/* ==========================================
+   LARGE GOLD CURVES
+========================================== */
+
+.projects-curves {
+  fill: none;
+
+  stroke: url(#projects-gold-curve);
+  stroke-width: 1.15;
+
+  opacity: 0.65;
+}
+
+.projects-curves circle {
+  stroke-width: 1;
+  opacity: 0.42;
+}
+
+.projects-curves path {
+  stroke-width: 1.15;
+  opacity: 0.65;
+
+  stroke-dasharray: 1800;
+  stroke-dashoffset: 0;
+
+  animation: projectsCurveFlow 28s ease-in-out infinite alternate;
+}
+
+.projects-curves path:nth-child(2) {
+  animation-delay: -5s;
+}
+
+.projects-curves path:nth-child(3) {
+  animation-delay: -9s;
+}
+
+.projects-curves path:nth-child(4) {
+  animation-delay: -13s;
+}
+
+@keyframes projectsCurveFlow {
+  from {
+    stroke-dashoffset: 0;
+    opacity: 0.35;
+  }
+
+  to {
+    stroke-dashoffset: 250;
+    opacity: 0.85;
+  }
+}
+
+/* ==========================================
+   HIGHLIGHTED CURVES
+========================================== */
+
+.projects-curve-highlight {
+  fill: none;
+
+  stroke: #e7c98f;
+  stroke-width: 1.2;
+
+  opacity: 0.5;
+
+  filter: drop-shadow(0 0 7px rgba(214, 189, 139, 0.65));
+
+  animation: projectsHighlightPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes projectsHighlightPulse {
+  from {
+    opacity: 0.2;
+  }
+
+  to {
+    opacity: 0.8;
+  }
+}
+
+/* ==========================================
+   CURVE GLOW
+========================================== */
+
+.projects-curve-glows {
+  fill: none;
+
+  stroke: #d6bd8b;
+  stroke-width: 5;
+
+  opacity: 0.22;
+
+  filter: url(#projects-curve-glow);
+
+  animation: projectsGlowPulse 10s ease-in-out infinite alternate;
+}
+
+@keyframes projectsGlowPulse {
+  from {
+    opacity: 0.12;
+  }
+
+  to {
+    opacity: 0.38;
+  }
+}
+
+/* ==========================================
+   GLOWING INTERSECTION POINTS
+========================================== */
+
+.projects-light-points {
+  fill: #f5d99e;
+
+  opacity: 0.85;
+
+  filter: drop-shadow(0 0 8px rgba(255, 216, 138, 0.8));
+}
+
+.projects-light-points circle:not([fill]) {
+  animation: projectsPointPulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes projectsPointPulse {
+  from {
+    opacity: 0.3;
+    transform: scale(0.8);
+    transform-origin: center;
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1.3);
+    transform-origin: center;
+  }
+}
+
+/* ==========================================
+   AMBIENT BACKGROUND GLOWS
+========================================== */
+
+.projects-background-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(100px);
+
+  will-change: transform;
+}
+
+.projects-glow-one {
+  width: 700px;
+  height: 700px;
+
+  top: -180px;
+  right: -200px;
+
+  background: radial-gradient(
+    circle,
+    rgba(214, 189, 139, 0.16),
+    rgba(174, 125, 58, 0.05) 48%,
+    transparent 72%
+  );
+
+  animation: projectsAmbientDrift 22s ease-in-out infinite alternate;
+}
+
+.projects-glow-two {
+  width: 650px;
+  height: 650px;
+
+  top: 55%;
+  left: -220px;
+
+  background: radial-gradient(
+    circle,
+    rgba(174, 125, 58, 0.13),
+    transparent 70%
+  );
+
+  animation: projectsAmbientDriftReverse 26s ease-in-out infinite alternate;
+}
+
+@keyframes projectsAmbientDrift {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.9);
+  }
+
+  to {
+    transform: translate3d(-45px, 55px, 0) scale(1.12);
+  }
+}
+
+@keyframes projectsAmbientDriftReverse {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.95);
+  }
+
+  to {
+    transform: translate3d(55px, -40px, 0) scale(1.12);
+  }
+}
+
+/* ==========================================
+   CINEMATIC VIGNETTE
+========================================== */
+
+.projects-background-vignette {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(12, 12, 12, 0.2),
+      transparent 25%,
+      transparent 75%,
+      rgba(12, 12, 12, 0.2)
+    ),
+    linear-gradient(
+      0deg,
+      rgba(12, 12, 12, 0.22),
+      transparent 35%,
+      transparent 80%,
+      rgba(12, 12, 12, 0.12)
+    ),
+    radial-gradient(
+      ellipse at center,
+      transparent 25%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+
+  pointer-events: none;
+}
+
+/* ==========================================
+   LIGHT THEME
+========================================== */
+
+:root[data-theme="light"] .projects-page {
+  background: #f3efe6;
+}
+
+:root[data-theme="light"] .projects-background {
+  background: #f3efe6;
+}
+
+:root[data-theme="light"] .projects-curves {
+  stroke: url(#projects-gold-curve);
+  opacity: 0.55;
+}
+
+:root[data-theme="light"] .projects-curves circle {
+  opacity: 0.32;
+}
+
+:root[data-theme="light"] .projects-curve-highlight {
+  stroke: #b18a50;
+  opacity: 0.5;
+
+  filter: drop-shadow(0 0 6px rgba(155, 121, 66, 0.35));
+}
+
+:root[data-theme="light"] .projects-curve-glows {
+  stroke: #b18a50;
+  opacity: 0.12;
+}
+
+:root[data-theme="light"] .projects-light-points {
+  fill: #9b7942;
+
+  filter: drop-shadow(0 0 7px rgba(155, 121, 66, 0.5));
+}
+
+:root[data-theme="light"] .projects-glow-one {
+  background: radial-gradient(
+    circle,
+    rgba(155, 121, 66, 0.17),
+    transparent 72%
+  );
+}
+
+:root[data-theme="light"] .projects-glow-two {
+  background: radial-gradient(
+    circle,
+    rgba(155, 121, 66, 0.12),
+    transparent 72%
+  );
+}
+
+:root[data-theme="light"] .projects-background-vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(155, 121, 66, 0.09) 100%
+  );
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+  .projects-background-glow {
+    filter: blur(75px);
+  }
+
+  .projects-glow-one {
+    width: 550px;
+    height: 550px;
+  }
+
+  .projects-glow-two {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-background-art {
+    width: 150%;
+    max-width: none;
+    left: -25%;
+  }
+
+  .projects-glow-one {
+    width: 420px;
+    height: 420px;
+
+    top: -100px;
+    right: -180px;
+  }
+
+  .projects-glow-two {
+    width: 380px;
+    height: 380px;
+
+    left: -170px;
+  }
+
+  .projects-background-glow {
+    filter: blur(65px);
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .projects-curves path,
+  .projects-curve-highlight,
+  .projects-curve-glows,
+  .projects-light-points circle,
+  .projects-background-glow {
+    animation: none !important;
+  }
+}
