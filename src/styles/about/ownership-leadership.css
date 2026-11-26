@@ -1,0 +1,457 @@
+.ownership-leadership {
+  --ownership-text: #f0f4f8;
+  --ownership-muted: #93a6bc;
+  --ownership-panel: #111c2c;
+  --ownership-border: #1c3446;
+  --ownership-blue: #536fe0;
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  padding: clamp(110px, 12vw, 180px) 7vw clamp(90px, 10vw, 140px);
+  overflow: hidden;
+  color: var(--ownership-text);
+  background:
+    radial-gradient(circle at 12% 18%, rgba(52, 126, 128, 0.14), transparent 30%),
+    #121c2c;
+}
+
+.ownership-leadership-container {
+  position: relative;
+  z-index: 2;
+  width: min(1440px, 100%);
+  margin: 0 auto;
+}
+
+.ownership-leadership-header {
+  max-width: 760px;
+  margin-bottom: clamp(45px, 7vw, 85px);
+}
+
+.ownership-leadership-eyebrow,
+.company-timeline-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 30px;
+  color: #61c5c6;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.ownership-leadership-line,
+.company-timeline-line {
+  width: 38px;
+  height: 1px;
+  background: #61c5c6;
+}
+
+.ownership-leadership-header h2,
+.company-timeline-header h2,
+.about-cta h2 {
+  margin: 0;
+  color: #f3efe6;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(44px, 6vw, 86px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.ownership-leadership-header h2 em,
+.company-timeline-header h2 em,
+.about-cta h2 em {
+  color: #d6bd8b;
+  font-style: italic;
+}
+
+.ownership-leadership-header p {
+  max-width: 620px;
+  margin: 28px 0 0;
+  color: #a9a398;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.founder-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(25px, 4vw, 48px);
+  align-items: start;
+}
+
+.ownership-card-stage {
+  min-width: 0;
+  perspective: 1400px;
+}
+
+.ownership-card {
+  --ownership-rotate-x: 0deg;
+  --ownership-rotate-y: 0deg;
+  --ownership-glare-x: 50%;
+  --ownership-glare-y: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 590px;
+  overflow: hidden;
+  border: 8px solid #173343;
+  border-radius: 22px;
+  background: #111c2c;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.38);
+  transform: rotateX(var(--ownership-rotate-x)) rotateY(var(--ownership-rotate-y));
+  transform-style: preserve-3d;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ownership-card:hover {
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.52);
+}
+
+.ownership-card-glow,
+.ownership-card-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ownership-card-glow {
+  z-index: 0;
+  background:
+    radial-gradient(circle at 25% 7%, rgba(89, 154, 142, 0.5), transparent 33%),
+    linear-gradient(140deg, rgba(214, 189, 139, 0.12), transparent 42%);
+}
+
+.ownership-card-glare {
+  z-index: 4;
+  opacity: 0;
+  background: radial-gradient(circle at var(--ownership-glare-x) var(--ownership-glare-y), rgba(255, 255, 255, 0.16), transparent 36%);
+  transition: opacity 0.25s ease;
+}
+
+.ownership-card:hover .ownership-card-glare {
+  opacity: 1;
+}
+
+.ownership-card-header,
+.ownership-card-body,
+.ownership-card-tabs {
+  position: relative;
+  z-index: 1;
+}
+
+.ownership-card-header {
+  min-height: 310px;
+  padding: 14px 26px 20px;
+  text-align: center;
+  background: linear-gradient(155deg, rgba(133, 153, 143, 0.5), rgba(26, 34, 45, 0.64) 55%, rgba(17, 28, 44, 0.95));
+}
+
+.ownership-card-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ownership-card-status,
+.ownership-card-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  border-radius: 22px;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ownership-card-status {
+  gap: 8px;
+  padding: 0 15px;
+  color: #e8f0f4;
+  background: rgba(37, 74, 91, 0.88);
+}
+
+.ownership-card-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #36dca1;
+  box-shadow: 0 0 0 4px rgba(54, 220, 161, 0.16);
+}
+
+.ownership-card-badge {
+  justify-content: center;
+  min-width: 62px;
+  padding: 0 13px;
+  border: 1px solid #00a7bb;
+  color: #5de1dd;
+  letter-spacing: 1px;
+}
+
+.ownership-card-portrait {
+  width: 142px;
+  height: 142px;
+  margin: 28px auto 15px;
+  overflow: hidden;
+  border: 4px solid rgba(17, 28, 44, 0.7);
+  border-radius: 50%;
+  background: #263345;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.34);
+}
+
+.ownership-card-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.ownership-card-name {
+  margin: 0;
+  color: #f1f5fa;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(25px, 3vw, 38px);
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.ownership-card-role {
+  margin: 10px 0 0;
+  color: #a4b7ca;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(10px, 1.15vw, 15px);
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.ownership-card-accent {
+  width: 185px;
+  height: 2px;
+  margin: 14px auto 0;
+  background: linear-gradient(90deg, transparent, #008fbd, transparent);
+}
+
+.ownership-card-body {
+  flex: 1;
+  min-height: 215px;
+  padding: 24px 28px 16px;
+  overflow-y: auto;
+  scrollbar-color: #406070 transparent;
+  scrollbar-width: thin;
+}
+
+.ownership-card-label {
+  display: block;
+  margin-bottom: 17px;
+  color: #f1f5fa;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.ownership-card-description,
+.ownership-card-panel > p,
+.ownership-card-timeline-item p {
+  margin: 0;
+  color: #94a8bf;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(12px, 1.3vw, 17px);
+  line-height: 1.8;
+}
+
+.ownership-card-focus {
+  display: none;
+}
+
+.ownership-card-socials {
+  display: flex;
+  gap: 16px;
+  margin-top: 21px;
+}
+
+.ownership-card-socials span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #afc0d5;
+  background: rgba(23, 39, 61, 0.9);
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.ownership-card-socials span:nth-child(3) {
+  font-size: 28px;
+}
+
+.ownership-card-timeline {
+  display: grid;
+  gap: 13px;
+}
+
+.ownership-card-timeline-item {
+  display: grid;
+  grid-template-columns: 39px 1fr;
+  gap: 12px;
+  padding-bottom: 13px;
+  border-left: 2px solid #536fe0;
+  padding-left: 12px;
+}
+
+.ownership-card-timeline-item > span {
+  color: #7a8da4;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.ownership-card-timeline-item strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #f0f4f8;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+}
+
+.ownership-card-timeline-item p {
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.ownership-card-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ownership-card-contact-details {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #a6b8ca;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+}
+
+.ownership-card-contact-details > span:first-child {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  color: #b6c8d8;
+  font-size: 20px;
+}
+
+.ownership-card-contact-details a {
+  color: #d7e3ed;
+}
+
+.ownership-card-contact-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-height: 42px;
+  margin-top: 6px;
+  border-radius: 4px;
+  color: #f5f8fc;
+  background: linear-gradient(90deg, #41a9cc, #536bd0);
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.ownership-card-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  min-height: 69px;
+  border-top: 1px solid rgba(116, 144, 164, 0.16);
+  background: #111a2b;
+}
+
+.ownership-card-tabs button {
+  min-width: 0;
+  border: 0;
+  border-right: 1px solid rgba(116, 144, 164, 0.08);
+  color: #8ea1b6;
+  background: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(10px, 1.2vw, 16px);
+  font-weight: 700;
+}
+
+.ownership-card-tabs button:last-child {
+  border-right: 0;
+}
+
+.ownership-card-tabs button:hover,
+.ownership-card-tabs button.is-active {
+  color: #eef4fa;
+  background: linear-gradient(135deg, rgba(69, 82, 155, 0.32), rgba(48, 47, 105, 0.18));
+  box-shadow: inset 0 -3px 0 #7a6ce2;
+}
+
+.ownership-leadership-number,
+.company-timeline-number {
+  position: absolute;
+  right: 4%;
+  bottom: 1%;
+  color: rgba(214, 189, 139, 0.035);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(180px, 28vw, 400px);
+  line-height: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 760px) {
+  .founder-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ownership-card {
+    min-height: 560px;
+  }
+
+  .ownership-card-header {
+    min-height: 285px;
+  }
+}
+
+@media (max-width: 420px) {
+  .ownership-card {
+    border-width: 5px;
+    border-radius: 16px;
+  }
+
+  .ownership-card-header {
+    padding-inline: 16px;
+  }
+
+  .ownership-card-body {
+    padding-inline: 18px;
+  }
+
+  .ownership-card-portrait {
+    width: 118px;
+    height: 118px;
+  }
+
+  .ownership-card-status,
+  .ownership-card-badge {
+    min-height: 31px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ownership-card {
+    transform: none !important;
+    transition: none;
+  }
+}

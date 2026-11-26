@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import useSectionParallax from "../../hooks/useSectionParallax";
 import { submitContactForm } from "../../services/contactService";
@@ -14,6 +14,9 @@ const initialForm = {
   phone: "",
   message: "",
 };
+
+const FIELD_NAMES = ["name", "email", "phone", "message"];
+const MAX_MESSAGE_LENGTH = 1000;
 
 function validateField(field, value) {
   const trimmedValue = value.trim();
@@ -47,11 +50,11 @@ function validateField(field, value) {
 
     case "message":
       if (!trimmedValue) return "Please tell us about your project.";
-      if (trimmedValue.length < 10) {
-        return "Message must contain at least 10 characters.";
+      if (trimmedValue.length < 5) {
+        return "Message must contain at least 5 characters.";
       }
-      if (trimmedValue.length > 5000) {
-        return "Message cannot exceed 5000 characters.";
+      if (trimmedValue.length > MAX_MESSAGE_LENGTH) {
+        return "Message cannot exceed 1000 characters.";
       }
       return "";
 
@@ -62,6 +65,7 @@ function validateField(field, value) {
 
 function ContactForm() {
   const sectionRef = useSectionParallax(0.3);
+  const fieldRefs = useRef({});
 
   const [formData, setFormData] = useState(initialForm);
   const [errors, setErrors] = useState({});
@@ -127,7 +131,7 @@ function ContactForm() {
   const validateForm = () => {
     const newErrors = {};
 
-    Object.keys(formData).forEach((field) => {
+    FIELD_NAMES.forEach((field) => {
       const error = validateField(field, formData[field]);
 
       if (error) {
@@ -136,12 +140,14 @@ function ContactForm() {
     });
 
     setErrors(newErrors);
-    setTouched({
-      name: true,
-      email: true,
-      phone: true,
-      message: true,
-    });
+    setTouched(Object.fromEntries(FIELD_NAMES.map((field) => [field, true])));
+
+    const firstInvalidField = FIELD_NAMES.find((field) => newErrors[field]);
+    if (firstInvalidField) {
+      requestAnimationFrame(() => {
+        fieldRefs.current[firstInvalidField]?.focus();
+      });
+    }
 
     return Object.keys(newErrors).length === 0;
   };
@@ -180,12 +186,16 @@ function ContactForm() {
           ...error.fieldErrors,
         }));
 
-        setTouched({
-          name: true,
-          email: true,
-          phone: true,
-          message: true,
-        });
+        setTouched(Object.fromEntries(FIELD_NAMES.map((field) => [field, true])));
+
+        const firstInvalidField = FIELD_NAMES.find(
+          (field) => error.fieldErrors[field]
+        );
+        if (firstInvalidField) {
+          requestAnimationFrame(() => {
+            fieldRefs.current[firstInvalidField]?.focus();
+          });
+        }
       }
 
       setSubmitStatus({
@@ -279,6 +289,9 @@ function ContactForm() {
 
                 <input
                   id="contact-name"
+                  ref={(element) => {
+                    fieldRefs.current.name = element;
+                  }}
                   type="text"
                   name="name"
                   placeholder="Your full name"
@@ -288,6 +301,7 @@ function ContactForm() {
                   onBlur={handleBlur}
                   maxLength={100}
                   autoComplete="name"
+                  required
                   aria-invalid={Boolean(errors.name)}
                   aria-describedby={
                     errors.name ? "contact-name-error" : undefined
@@ -312,6 +326,9 @@ function ContactForm() {
 
                 <input
                   id="contact-email"
+                  ref={(element) => {
+                    fieldRefs.current.email = element;
+                  }}
                   type="email"
                   name="email"
                   placeholder="you@example.com"
@@ -322,6 +339,7 @@ function ContactForm() {
                   maxLength={254}
                   autoComplete="email"
                   inputMode="email"
+                  required
                   aria-invalid={Boolean(errors.email)}
                   aria-describedby={
                     errors.email ? "contact-email-error" : undefined
@@ -347,6 +365,9 @@ function ContactForm() {
 
                 <input
                   id="contact-phone"
+                  ref={(element) => {
+                    fieldRefs.current.phone = element;
+                  }}
                   type="tel"
                   name="phone"
                   placeholder="+91 98765 43210"
@@ -381,21 +402,25 @@ function ContactForm() {
                   </label>
 
                   <span className="contact-character-count">
-                    {formData.message.length} / 5000
+                    {formData.message.length} / {MAX_MESSAGE_LENGTH}
                   </span>
                 </div>
 
                 <textarea
                   id="contact-message"
+                  ref={(element) => {
+                    fieldRefs.current.message = element;
+                  }}
                   name="message"
                   placeholder="Tell us what you have in mind..."
                   value={formData.message}
                   onChange={handleChange}
                   onFocus={() => setActiveField("message")}
                   onBlur={handleBlur}
-                  minLength={10}
-                  maxLength={5000}
+                  minLength={5}
+                  maxLength={MAX_MESSAGE_LENGTH}
                   rows={5}
+                  required
                   aria-invalid={Boolean(errors.message)}
                   aria-describedby={
                     errors.message ? "contact-message-error" : undefined
@@ -419,6 +444,7 @@ function ContactForm() {
                 role={
                   submitStatus.type === "error" ? "alert" : "status"
                 }
+                aria-live="polite"
               >
                 <span className="contact-alert-symbol">
                   {submitStatus.type === "success" ? "✓" : "!"}

@@ -11,12 +11,15 @@ export async function submitContactForm(formData) {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(formData),
     });
   } catch {
-    throw new Error(
-      "Unable to connect to the server. Please check your connection and try again."
+    const networkError = new Error(
+      "Unable to reach the server. Please check your connection and try again."
     );
+    networkError.code = "NETWORK_ERROR";
+    throw networkError;
   }
 
   const result = await response.json().catch(() => ({}));
@@ -36,8 +39,20 @@ export async function submitContactForm(formData) {
       );
     }
 
+    if (response.status >= 500) {
+      throw new Error(
+        "Something went wrong on our side. Please try again shortly."
+      );
+    }
+
     throw new Error(
       result.message || "Something went wrong. Please try again."
+    );
+  }
+
+  if (!result.success) {
+    throw new Error(
+      result.message || "We could not submit your message. Please try again."
     );
   }
 
