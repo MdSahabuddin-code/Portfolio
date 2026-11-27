@@ -133,6 +133,37 @@
   letter-spacing: 1.2px;
 }
 
+/* LOGOUT BUTTON */
+
+.admin-logout-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+
+  border: 1px solid rgba(214, 189, 139, 0.25);
+  border-radius: 4px;
+
+  background: transparent;
+  color: rgba(243, 239, 230, 0.75);
+
+  font-family: inherit;
+  font-size: 11px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin-logout-button:hover {
+  border-color: #d6bd8b;
+  background: rgba(214, 189, 139, 0.08);
+  color: #d6bd8b;
+}
+
+.admin-logout-button span:first-child {
+  font-size: 17px;
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 768px) {

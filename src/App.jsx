@@ -11,6 +11,10 @@ import Projects from "./pages/Projects";
 import Services from "./pages/services";
 import Contact from "./pages/contact";
 
+// Admin Authentication
+import AdminLogin from "./admin/pages/AdminLogin";
+import ProtectedAdminRoute from "./admin/components/ProtectedAdminRoute";
+
 // Admin Dashboard
 import AdminLayout from "./admin/components/AdminLayout";
 import AdminDashboard from "./admin/pages/AdminDashboard";
@@ -33,11 +37,19 @@ function App() {
         </Route>
 
         {/* ==============================
-            ADMIN DASHBOARD ROUTES
+            ADMIN LOGIN
         ============================== */}
 
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route index element={<AdminDashboard />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+
+        {/* ==============================
+            PROTECTED ADMIN DASHBOARD
+        ============================== */}
+
+        <Route element={<ProtectedAdminRoute />}>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+          </Route>
         </Route>
 
       </Routes>

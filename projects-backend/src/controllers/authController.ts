@@ -24,7 +24,7 @@ export const loginAdmin = async (
   res: Response
 ) => {
   try {
-    const { email, password } = req.body ?? {};
+    const { email, password, rememberMe } = req.body ?? {};
 
     // Validate input
     if (
@@ -39,6 +39,9 @@ export const loginAdmin = async (
       });
       return;
     }
+
+    // Remember Me is enabled only when explicitly true
+    const shouldRemember = rememberMe === true;
 
     // Find admin and include password hash
     const admin = await Admin.findOne({
@@ -69,12 +72,20 @@ export const loginAdmin = async (
     }
 
     // Generate JWT
-    const token = generateAuthToken(admin._id.toString());
+    const token = generateAuthToken(
+      admin._id.toString(),
+      shouldRemember
+    );
+
+    // Configure cookie lifetime
+    const rememberCookieOptions = shouldRemember
+      ? { maxAge: 30 * 24 * 60 * 60 * 1000 }
+      : {};
 
     // Store JWT in HTTP-only cookie
     res.cookie(COOKIE_NAME, token, {
       ...cookieOptions,
-      maxAge: 24 * 60 * 60 * 1000,
+      ...rememberCookieOptions,
     });
 
     res.status(200).json({

@@ -20,7 +20,10 @@ export const comparePassword = async (
 };
 
 // 3. Generate JWT authentication token
-export const generateAuthToken = (adminId: string): string => {
+export const generateAuthToken = (
+  adminId: string,
+  rememberMe: boolean = false
+): string => {
   const jwtSecret = process.env.JWT_SECRET;
 
   if (!jwtSecret) {
@@ -34,7 +37,7 @@ export const generateAuthToken = (adminId: string): string => {
     },
     jwtSecret,
     {
-      expiresIn: "1d",
+      expiresIn: rememberMe ? "30d" : "1d",
     }
   );
 };
