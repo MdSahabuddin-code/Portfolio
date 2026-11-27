@@ -29,6 +29,12 @@ function AdminDashboard() {
       detail: "Currently highlighted",
       icon: "✧",
     },
+    {
+      label: "Email Enquiries",
+      value: "00",
+      detail: "New website enquiries",
+      icon: "✉",
+    },
   ];
 
   const recentProjects = [
@@ -70,6 +76,12 @@ function AdminDashboard() {
       description: "Update your studio members",
       icon: "♙",
       path: "/admin/team",
+    },
+    {
+      title: "View Email Enquiries",
+      description: "Check messages from website visitors",
+      icon: "✉",
+      path: "/admin/emails",
     },
   ];
 
@@ -215,6 +227,36 @@ function AdminDashboard() {
           </div>
         </div>
 
+      </section>
+
+      {/* RECENT EMAIL ENQUIRIES */}
+      <section className="admin-dashboard-panel admin-email-panel">
+        <div className="admin-panel-header">
+          <div>
+            <span className="admin-section-eyebrow">
+              WEBSITE COMMUNICATION
+            </span>
+
+            <h3>Recent Email Enquiries</h3>
+          </div>
+
+          <Link to="/admin/emails" className="admin-panel-link">
+            View All ↗
+          </Link>
+        </div>
+
+        <div className="admin-email-empty">
+          <div className="admin-email-empty-icon">
+            ✉
+          </div>
+
+          <h4>No enquiries to display yet</h4>
+
+          <p>
+            Messages submitted through your website's contact form
+            will appear here once the database is connected.
+          </p>
+        </div>
       </section>
 
       {/* BOTTOM NOTE */}
